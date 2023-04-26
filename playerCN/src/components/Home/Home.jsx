@@ -6,11 +6,11 @@ const Home = () => {
   return (
     <div>
       <NavBar />
-      <h1>DJKASDKAs</h1>
+      <div className={style.containerHome}>
+        <h1>DJKASDKAs</h1>
+      </div>
     </div>
   );
 };
 
 export default Home;
-
-

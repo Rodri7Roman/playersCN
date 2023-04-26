@@ -2,17 +2,59 @@
   background-color: var(--color-blue);
 }
 
+.navBar {
+  width: 15%;
+  height: 100vh;
+  position: fixed;
+  top: 0.1px;
+  padding-top: 26px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerLogo {
+  margin-bottom: 60px;
+}
+
+.flexNav {
+  flex-grow: 1;
+}
+
+.navBarNav li {
+  margin-top: 12px;
+  text-align: start;
+  padding-left: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  transition: all .1s ease-in;
+}
+
+.navBarNav li:hover {
+  background-color: #40516925;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+
 .imgLogo {
   width: 32px;
   height: 32px;
 }
-
-.containerFluid {
-  padding-top: 12px;
-  padding-bottom: 12px;
+.textLinkNav {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.textLinkNav p {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 1.6rem;
 }
 
-.navBarNav {
-  text-align: center;
-  align-items: center;
+.imgLinkNav {
+  width: 34px;
+  height: 34px;
 }
