@@ -1,0 +1,18 @@
+.bg {
+  background-color: var(--color-blue);
+}
+
+.imgLogo {
+  width: 32px;
+  height: 32px;
+}
+
+.containerFluid {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.navBarNav {
+  text-align: center;
+  align-items: center;
+}
