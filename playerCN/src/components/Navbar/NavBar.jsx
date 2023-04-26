@@ -1,9 +1,6 @@
 import React from "react";
 import logo from "../../assets/icons/Logo_GC2.svg";
 import style from "./NavBar.module.css";
-import homeIcon from "../../assets/icons/home.svg";
-import messagesIcon from "../../assets/icons/messages.svg";
-import notis from "../../assets/icons/notis.svg";
 
 const NavBar = (props) => {
   return (
