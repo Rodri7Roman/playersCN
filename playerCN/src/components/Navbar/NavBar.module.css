@@ -1,9 +1,10 @@
 .bg {
   background-color: var(--color-blue);
+  border-right: 1px solid #414141;
 }
 
 .navBar {
-  width: 15%;
+  width: 15vw;
   height: 100vh;
   position: fixed;
   top: 0.1px;
@@ -18,6 +19,22 @@
 .containerLogo {
   margin-bottom: 60px;
 }
+.containerTextLinkLogo {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.textLogo {
+  font-family: "Lobster Two", cursive;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #ffffff;
+  padding-left: 12px;
+}
 
 .flexNav {
   flex-grow: 1;
@@ -25,36 +42,38 @@
 
 .navBarNav li {
   margin-top: 12px;
-  text-align: start;
-  padding-left: 8px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  transition: all .1s ease-in;
 }
 
-.navBarNav li:hover {
+.containerTextLinkNav {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  transition: all 0.1s ease-in;
+}
+
+.navBarNav .containerTextLinkNav:hover {
   background-color: #40516925;
   border-radius: 8px;
   color: #ffffff;
 }
 
-
 .imgLogo {
   width: 32px;
   height: 32px;
 }
-.textLinkNav {
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-}
-.textLinkNav p {
+
+.containerTextLinkNav .textIcon {
   margin: 0;
   padding-left: 16px;
   font-size: 1.6rem;
 }
 
-.imgLinkNav {
-  width: 34px;
-  height: 34px;
+
+@media screen and (max-width: 1410px) {
+  .containerTextLinkLogo{
+    flex-direction: column;
+  }
 }
