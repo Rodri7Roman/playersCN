@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./Post.module.css";
+import style from "./Prompt.module.css";
 import user from "../../../assets/icons/user.png";
-const Post = (props) => {
+const Prompt = (props) => {
   return (
     <div className={style.PostContainer}>
       <div className={style.fotoUsuario}>
@@ -9,9 +9,9 @@ const Post = (props) => {
       </div>
       <div className={style.containerTextArea}>
         <textarea
-          name="post"
-          id="post"
-          rows={8}
+          name="prompt"
+          id="prompt"
+          rows={4}
           placeholder="¿Qué estás pensando?"
         ></textarea>
         <div className={style.containerEnviarIcon}>
@@ -28,4 +28,4 @@ const Post = (props) => {
   );
 };
 
-export default Post;
+export default Prompt;

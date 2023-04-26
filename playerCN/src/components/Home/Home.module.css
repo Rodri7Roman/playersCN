@@ -1,8 +1,12 @@
-.containerHome{
-    width: 60vw;
-    margin: 0 auto;
-    height: 120vh;
-    padding-top: 46px;
-    border-right: 1px solid #414141;
+.containerHome {
+  width: 35vw;
+  margin-left: 20vw;
+  padding-top: 46px;
+  border-right: 1px solid #414141;
 }
-
+.s{
+    color: antiquewhite;
+    margin-left: 60vw;
+    position: fixed;
+    top: .1px;
+}
