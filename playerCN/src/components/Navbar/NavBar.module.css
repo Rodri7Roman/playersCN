@@ -4,7 +4,7 @@
 }
 
 .navBar {
-  width: 15vw;
+  width: 20vw;
   height: 100vh;
   position: fixed;
   top: 0.1px;
@@ -25,13 +25,12 @@
   align-items: center;
   padding-left: 12px;
   padding-top: 12px;
-  padding-bottom: 12px;
 }
 
 .textLogo {
   font-family: "Lobster Two", cursive;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 2.6rem;
   color: #ffffff;
   padding-left: 12px;
 }

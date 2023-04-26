@@ -1,6 +1,8 @@
 .containerHome{
-    width: 60%;
+    width: 60vw;
     margin: 0 auto;
-    height: 1000vh;
+    height: 120vh;
+    padding-top: 46px;
+    border-right: 1px solid #414141;
 }
 

@@ -1,13 +1,14 @@
 import React from "react";
 import style from "./Home.module.css";
 import NavBar from "../Navbar/NavBar";
+import Post from "./Post/Post";
 
 const Home = () => {
   return (
     <div>
       <NavBar />
       <div className={style.containerHome}>
-        <h1>DJKASDKAs</h1>
+        <Post />
       </div>
     </div>
   );
