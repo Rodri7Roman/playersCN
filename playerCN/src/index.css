@@ -1,6 +1,8 @@
 :root {
   --font-poppins: "Poppins", sans-serif;
   --font-roboto: "Roboto", sans-serif;
-  --color-blue: #161E29;
-  --color-blue-light: #1E3748;
+  --color-blue: #161e29;
+  --color-blue-light: #1e3748;
+  --color-white: #e6e7e7;
+  --color-grey: #818486;
 }

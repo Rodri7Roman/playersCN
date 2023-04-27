@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../assets/icons/Logo_GC2.svg";
 import style from "./NavBar.module.css";
+import { NavLink } from "react-router-dom";
 
 const NavBar = (props) => {
   return (
@@ -15,34 +16,50 @@ const NavBar = (props) => {
       <div className={style.flexNav}>
         <ul className={`navbar-nav ${style.navBarNav}`}>
           <li className="nav-item">
-            <a href="" className={`nav-link ${style.containerTextLinkNav}`}>
+            <NavLink
+              to={"/"}
+              className={`nav-link ${style.containerTextLinkNav}`}
+            >
               <box-icon name="home-alt-2" color="#ffffff"></box-icon>
               <p className={style.textIcon}>Inicio</p>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a href="" className={`nav-link ${style.containerTextLinkNav}`}>
+            <NavLink
+              to={"/equipos"}
+              className={`nav-link ${style.containerTextLinkNav}`}
+            >
               <box-icon name="group" color="#ffffff"></box-icon>
               <p className={style.textIcon}>Equipos</p>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a href="" className={`nav-link ${style.containerTextLinkNav}`}>
+            <NavLink
+              to={"/jugadores"}
+              className={`nav-link ${style.containerTextLinkNav}`}
+            >
               <box-icon name="joystick" color="#ffffff"></box-icon>
               <p className={style.textIcon}>Jugadores</p>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a href="" className={`nav-link ${style.containerTextLinkNav}`}>
+            <NavLink
+              to={"/mensajes"}
+              className={`nav-link ${style.containerTextLinkNav}`}
+            >
               <box-icon name="message" color="#ffffff"></box-icon>
               <p className={style.textIcon}>Mensajes</p>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a href="" className={`nav-link ${style.containerTextLinkNav}`}>
+            <NavLink
+              to={"/notificaciones"}
+              href=""
+              className={`nav-link ${style.containerTextLinkNav}`}
+            >
               <box-icon name="bell" color="#ffffff"></box-icon>
               <p className={style.textIcon}>Notificaciones</p>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
