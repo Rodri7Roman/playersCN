@@ -50,6 +50,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   transition: all 0.1s ease-in;
+  font-size: 2rem;
 }
 
 .navBarNav .containerTextLinkNav:hover {
@@ -66,8 +67,9 @@
 .containerTextLinkNav .textIcon {
   margin: 0;
   padding-left: 16px;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #ffffff;
+
 }
 
 @media screen and (max-width: 1410px) {

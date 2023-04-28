@@ -2,12 +2,13 @@
   width: 35vw;
   margin-left: 20vw;
   border-right: 1px solid #414141;
+  padding-bottom: 18px;
 }
 
 .containerSearch {
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  background-color: rgba(27, 27, 27, 0.2);
+  background-color: #1b1b1b33;
 }
 
 .s {
