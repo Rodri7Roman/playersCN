@@ -3,28 +3,56 @@
   border-bottom: 1px solid #41414148;
 }
 
-.containerUserContent div {
-  padding-bottom: 12px;
+.containerUserContent {
+  display: flex;
 }
 
 .imgUser {
-  width: 34px;
-  height: 34px;
+  width: 64px;
+  height: 64px;
+  border-radius: 58px;
+}
+
+.content {
+  margin-bottom: 16px;
 }
 
 .nameUser {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #ffffffda;
+  color: var(--color-white);
   font-family: var(--font-poppins);
+  padding-left: 8px;
+  letter-spacing: 1px;
 }
-
+.arroba {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.1rem;
+  color: var(--color-grey);
+}
 .contentPost {
   font-size: 1.4rem;
-  color: #ffffffbb;
-  padding-left: 24px;
+  color: var(--color-white);
+  padding-left: 8px;
   font-family: var(--font-poppins);
+  padding-top: 2px;
+  font-weight: 400;
   line-height: 2.4rem;
+}
+
+.flexImgs {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* width: 100%; */
+}
+.imgContent {
+  width: 100%;
+  max-width: 580px;
+  min-height: 320px;
+  max-height: 350px;
+  border-radius: 18px;
 }
 .containerReactions {
   display: flex;
@@ -38,5 +66,5 @@
 }
 
 .textReactions {
-  color: #fff;
+  color: var(--color-grey);
 }

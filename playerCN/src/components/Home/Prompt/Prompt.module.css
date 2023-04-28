@@ -24,9 +24,10 @@ textarea::-webkit-scrollbar-thumb {
   padding: 16px;
 }
 
-.fotoUsuario img {
-  width: 34px;
-  height: 34px;
+.imgPerfil {
+  border-radius: 54px;
+  width: 64px;
+  height: 64px;
 }
 
 .containerTextArea {

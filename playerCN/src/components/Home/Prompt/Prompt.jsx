@@ -1,11 +1,13 @@
 import React from "react";
 import style from "./Prompt.module.css";
 import user from "../../../assets/icons/user.png";
+import perfil from "../../../assets/imgs/logoEquipo.jpg";
+
 const Prompt = (props) => {
   return (
     <div className={style.PostContainer}>
       <div className={style.fotoUsuario}>
-        <img src={user} alt="" />
+        <img src={perfil} alt="" className={style.imgPerfil} />
       </div>
       <div className={style.containerTextArea}>
         <textarea
