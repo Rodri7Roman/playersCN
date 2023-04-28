@@ -1,3 +1,7 @@
 .containerCards {
-  padding: 4px;
+  padding-top: 4px;
+}
+.containerCard {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #414141;
 }

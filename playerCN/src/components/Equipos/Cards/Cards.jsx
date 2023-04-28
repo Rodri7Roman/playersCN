@@ -6,10 +6,19 @@ import Card from "../Card/Card";
 const Cards = (props) => {
   return (
     <div className={style.containerCards}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <div className={style.containerCard}>
+        <Card />
+      </div>
+
+      <div className={style.containerCard}>
+        <Card />
+      </div>
+      <div className={style.containerCard}>
+        <Card />
+      </div>
+      <div className={style.containerCard}>
+        <Card />
+      </div>
     </div>
   );
 };
