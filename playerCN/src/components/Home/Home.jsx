@@ -9,9 +9,9 @@ const Home = () => {
   return (
     <div>
       <NavBar />
-      <div className={style.containerHome}>
+      <div className={style.containerHome} id="inicio">
         <div className={style.containerInicio}>
-          <NavLink to={"/"} className={style.linkInicio}>Inicio</NavLink>
+          <a href="#inicio" className={style.linkInicio}>Inicio</a>
         </div>
 
         <Prompt />

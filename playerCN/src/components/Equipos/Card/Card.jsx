@@ -14,7 +14,7 @@ const Card = (props) => {
       </div>
       <NavLink to={"/equipos/1"} className={style.linkTeam}>
         <div className={style.containerLogo}>
-          <img src={logoEquipo} alt="" />
+          <img src={logoEquipo2} alt="" />
         </div>
         <div className={style.containerName}>
           <h1>Nombre de Equipo</h1>
