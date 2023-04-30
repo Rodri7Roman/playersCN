@@ -4,7 +4,7 @@ import NavBar from "../Navbar/NavBar";
 import Prompt from "../Home/Prompt/Prompt";
 import { NavLink } from "react-router-dom";
 import Profile from "./Profile/Profile";
-
+import Posts from "../Posts/Posts";
 const Equipo = (props) => {
   return (
     <div>
@@ -17,6 +17,9 @@ const Equipo = (props) => {
         </div>
         <div>
           <Profile />
+          {/* <div className={style.containerPost}>
+            <Posts />
+          </div> */}
         </div>
       </div>
       <h1 className={style.tercerSeccion}>KJASD</h1>

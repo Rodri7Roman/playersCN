@@ -3,8 +3,12 @@
   margin-left: 20vw;
   border-right: 1px solid #41414148;
   padding-bottom: 18px;
-  height: 120vh;
 }
+
+/* .containerPost {
+  position: absolute;
+  top: 350px;
+} */
 
 .tercerSeccion {
   color: antiquewhite;
