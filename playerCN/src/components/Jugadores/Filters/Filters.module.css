@@ -1,0 +1,29 @@
+.containersSelects {
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.selectGames {
+  width: 180px;
+  height: 32px;
+  text-align: center;
+  border-radius: 28px;
+  background-color: transparent;
+  color: #225096;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-family: var(--font-poppins);
+  border-color: #225096;
+  outline: none;
+}
+
+.selectGames option {
+  background-color: var(--color-blue);
+  font-size: 1.6rem;
+}
+
+.selectGames:hover {
+  background-color: #63a3eb;
+  border: 2px solid #225096;
+}

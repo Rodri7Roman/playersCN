@@ -6,6 +6,7 @@ import Equipo from "./components/Equipo/Equipo";
 import { Provider } from "react-redux";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import store from "./redux/store";
+import Jugadores from "./components/Jugadores/Jugadores";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/equipos" element={<Equipos />} />
             <Route exact path="/equipos/1" element={<Equipo />} />
+            <Route exact path="/jugadores" element={<Jugadores />} />
           </Routes>
         </div>
       </BrowserRouter>
