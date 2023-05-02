@@ -27,9 +27,9 @@ const Post = (props) => {
             magni nobis reprehenderit suscipit, impedit eligendi quidem aperiam
             earum blanditiis cum quam commodi!
           </p>
-          <div className={style.flexImgs}>
+          {/* <div className={style.flexImgs}>
             <img src={fire} alt="" className={style.imgContent} />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={style.containerReactions}>

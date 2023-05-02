@@ -50,10 +50,11 @@
 }
 .imgContent {
   width: 100%;
-  max-width: 580px;
+  max-width: 660px;
   min-height: 320px;
   max-height: 350px;
   border-radius: 18px;
+  object-fit: cover;
 }
 .containerReactions {
   display: flex;
