@@ -11,16 +11,14 @@
   border-radius: 18px;
   /* border: 1px solid #414141; */
   margin-bottom: 16px;
-
 }
 
 .containerCard:hover {
   /* background-color: #10111344; */
-  -webkit-box-shadow: 0px 35px 26px -1px rgba(16,17,19,0.57);
-  -moz-box-shadow: 0px 35px 26px -1px rgba(16,17,19,0.57);
-  box-shadow: 0px 35px 26px -1px rgba(16,17,19,0.57);
+  -webkit-box-shadow: 0px 35px 26px -1px rgba(16, 17, 19, 0.57);
+  -moz-box-shadow: 0px 35px 26px -1px rgba(16, 17, 19, 0.57);
+  box-shadow: 0px 35px 26px -1px rgba(16, 17, 19, 0.57);
 }
-
 
 .imgBanner {
   width: 100%;
@@ -49,13 +47,13 @@
 
 .containerName h1 {
   color: var(--color-white);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   padding-left: 16px;
 }
 
 .containerArroba {
   position: absolute;
-  top: 212px;
+  top: 213px;
   padding-left: 28px;
 }
 
@@ -70,10 +68,11 @@
   top: 234px;
   padding-left: 28px;
   padding-right: 38px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .containerDescription h2 {
   color: var(--color-grey);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .containerFollow {
@@ -101,10 +100,9 @@
   border: 2px solid #225096;
 }
 
-
-.linkTeam{
+.linkTeam {
   text-decoration: none;
 }
-.linkTeam:hover{
+.linkTeam:hover {
   color: #fff;
 }

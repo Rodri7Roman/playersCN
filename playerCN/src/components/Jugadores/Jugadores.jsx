@@ -15,7 +15,7 @@ const Jugadores = () => {
             BUSCADOR DE JUGADORES
           </NavLink>
         </div>
-        <Filters />
+        {/* <Filters /> */}
         <div className={style.containerCards}>
           <Cards />
         </div>
