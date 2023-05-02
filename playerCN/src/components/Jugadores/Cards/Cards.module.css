@@ -1,0 +1,10 @@
+.containerCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.containerCards div{
+    padding-bottom: 40px;
+}

@@ -3,9 +3,9 @@ import style from "./Filters.module.css";
 
 const Filters = () => {
   return (
-    <div>
+    <div className={style.containerFilters}>
       <div className={style.containersSelects}>
-        <select name="" id="" className={style.selectGames}>
+        <select name="videogame" id="videogame" className={style.selectGames}>
           <option value="" className={style.op}>
             Videojuego
           </option>

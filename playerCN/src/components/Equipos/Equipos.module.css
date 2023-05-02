@@ -1,8 +1,9 @@
 .containerEquipos {
-  width: 35vw;
+  width: 40vw;
   margin-left: 20vw;
-  border-right: 1px solid #414141;
+  border-right: 1px solid #41414148;
   padding-bottom: 18px;
+  min-height: 110vh;
 }
 
 .containerSearch {
