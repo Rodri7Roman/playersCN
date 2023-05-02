@@ -37,7 +37,7 @@ textarea::-webkit-scrollbar-thumb {
 
 .containerTextArea textarea {
   background-color: transparent;
-  width: 30vw;
+  width: 34vw;
   resize: none;
   border: none !important;
   outline: none;
@@ -46,6 +46,11 @@ textarea::-webkit-scrollbar-thumb {
   padding-left: 8px;
   color: #ffffff;
   font-weight: lighter;
+}
+.containerTextArea textarea:focus-visible {
+  -webkit-box-shadow: 0px 35px 26px -1px rgba(16, 17, 19, 0.57);
+  -moz-box-shadow: 0px 35px 26px -1px rgba(16, 17, 19, 0.57);
+  box-shadow: 0px 5px 20px 10px rgba(16, 17, 19, 0.57);
 }
 
 .containerEnviarIcon {
@@ -60,7 +65,7 @@ textarea::-webkit-scrollbar-thumb {
 .containerEnviar {
   padding-right: 12px;
 }
-.containerEnviar button {
+.active {
   width: 80px;
   height: 40px;
   border-radius: 16px;
@@ -69,3 +74,14 @@ textarea::-webkit-scrollbar-thumb {
   background-color: var(--color-blue-light);
   color: #ffffff;
 }
+
+.desactive {
+  width: 80px;
+  height: 40px;
+  border-radius: 16px;
+  font-size: 1.6rem;
+  border: none;
+  background-color: #21333f5d;
+  color: #ffffff;
+}
+

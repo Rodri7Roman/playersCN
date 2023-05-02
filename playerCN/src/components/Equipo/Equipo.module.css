@@ -1,5 +1,5 @@
 .containerEquipo {
-  width: 35vw;
+  width: 40vw;
   margin-left: 20vw;
   border-right: 1px solid #41414148;
   padding-bottom: 18px;
@@ -12,7 +12,7 @@
 
 .tercerSeccion {
   color: antiquewhite;
-  margin-left: 60vw;
+  margin-left: 70vw;
   position: fixed;
   top: 0.1px;
 }

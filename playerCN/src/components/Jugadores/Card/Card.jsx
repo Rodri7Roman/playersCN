@@ -21,7 +21,9 @@ const Card = () => {
       <div className={style.containerContent}>
         <NavLink to={"1"} className={style.navLink}>
           {" "}
-          <h1 className={style.nameUser}>NameUser</h1>
+          <h1 className={style.nameUser}>
+            NameUser 
+          </h1><span className={style.arroba}>@NameUser_</span>
           <h2 className={style.content}>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
             soluta accusamus rerum minus...

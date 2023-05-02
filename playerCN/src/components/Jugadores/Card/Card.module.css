@@ -38,6 +38,7 @@
   margin-left: 16px;
   font-size: 1.8rem;
   color: var(--color-white);
+  margin-bottom: 0;
 }
 
 .navLink {
@@ -45,10 +46,17 @@
 }
 
 .content {
+  margin-top: 8px;
   margin-left: 16px;
   color: var(--color-grey);
   font-weight: lighter;
   font-size: 1.4rem;
+}
+.arroba {
+  color: var(--color-grey);
+  font-weight: lighter;
+  font-size: 1.2rem;
+  margin-left: 16px;
 }
 
 .containerFollow {

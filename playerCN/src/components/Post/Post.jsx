@@ -19,13 +19,7 @@ const Post = (props) => {
             Praesentium libero earum ipsum alias illo. Dolores mollitia nulla
             magni nobis reprehenderit suscipit, impedit eligendi quidem aperiam
             earum blanditiis cum quam commodi! Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Praesentium libero earum ipsum alias
-            illo. Dolores mollitia nulla magni nobis reprehenderit suscipit,
-            impedit eligendi quidem aperiam earum blanditiis cum quam commodi!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Praesentium libero earum ipsum alias illo. Dolores mollitia nulla
-            magni nobis reprehenderit suscipit, impedit eligendi quidem aperiam
-            earum blanditiis cum quam commodi!
+            consectetur adipisicing elit. Praes
           </p>
           {/* <div className={style.flexImgs}>
             <img src={fire} alt="" className={style.imgContent} />

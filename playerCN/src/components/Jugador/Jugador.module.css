@@ -1,15 +1,18 @@
-.containerHome {
+.containerJugador {
   width: 40vw;
   margin-left: 20vw;
   border-right: 1px solid #41414148;
+  padding-bottom: 18px;
   min-height: 110vh;
 }
-.s {
+
+.tercerSeccion {
   color: antiquewhite;
   margin-left: 70vw;
   position: fixed;
   top: 0.1px;
 }
+
 .containerInicio {
   padding-top: 26px;
   padding-left: 16px;
@@ -17,6 +20,7 @@
   padding-bottom: 16px;
   position: sticky;
   top: 0.1px;
+  z-index: 9;
 }
 .containerInicio {
   -webkit-backdrop-filter: blur(2px);
@@ -29,9 +33,6 @@
   font-weight: bold;
   color: #fff;
   text-decoration: none;
-  /* border-bottom: 2px solid var(--color-blue-light); */
-  /* border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px; */
 }
 .linkInicio:hover {
   color: #fff;

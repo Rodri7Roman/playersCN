@@ -17,7 +17,7 @@ const Description = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Reprehenderit quas debitis amet impe dita dignissimos, aut
               laudantium repellendus repudiandae quidem et. Voluptas labore
-              eveniet non velit porro quas culpa ut est. Reprehenderit quas
+              eveniet non velit porro quas culpa ut estsdadsssa. Reprehenderit quas
               debitis amet laudantium repellendus repudiandae quidem et.
               Voluptas labore eveniet non velit porro quas culpa ut est.
               Reprehenderit quas debitis amet
