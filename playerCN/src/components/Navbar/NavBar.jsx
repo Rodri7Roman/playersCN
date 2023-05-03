@@ -42,15 +42,7 @@ const NavBar = (props) => {
               <p className={style.textIcon}>Jugadores</p>
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink
-              to={"/mensajes"}
-              className={`nav-link ${style.containerTextLinkNav}`}
-            >
-              <box-icon name="message" color="#ffffff"></box-icon>
-              <p className={style.textIcon}>Mensajes</p>
-            </NavLink>
-          </li>
+
           <li className="nav-item">
             <NavLink
               to={"/notificaciones"}
@@ -64,7 +56,7 @@ const NavBar = (props) => {
         </ul>
       </div>
       <div>
-        <p className={`nav-link ${style.containerTextLinkNav}`}>OTRA COSA</p>
+        <NavLink className={`nav-link ${style.containerTextLinkNav}`}>OTRA COSA</NavLink>
       </div>
     </nav>
   );
