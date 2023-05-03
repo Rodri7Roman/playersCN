@@ -8,7 +8,6 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import store from "./redux/store";
 import Jugadores from "./components/Jugadores/Jugadores";
 import Jugador from "./components/Jugador/Jugador";
-import Mensajes from "./components/Mensajes/Mensajes";
 
 function App() {
   return (
