@@ -18,6 +18,10 @@
   margin: 0 auto;
 }
 
+.form {
+  text-align: center;
+}
+
 .form div {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -26,7 +30,6 @@
 }
 
 .labelRegister {
-  text-align: center;
   padding-bottom: 4px;
   font-size: 1.6rem;
   color: var(--color-white);
@@ -37,4 +40,13 @@
   height: 20px;
   outline: none;
   font-size: 1.4rem;
+}
+
+.buttonRegister {
+  width: 80px;
+  height: 34px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-blue);
+  color: var(--color-white);
 }

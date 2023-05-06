@@ -8,7 +8,7 @@ const Register = () => {
         <form action="" className={style.form}>
           <div>
             <label htmlFor="" className={style.labelRegister}>
-              Correo Electronico:{" "}
+              Correo Electrónico:{" "}
             </label>
             <input type="text" className={style.inputRegister} />
           </div>
@@ -24,6 +24,7 @@ const Register = () => {
             </label>
             <input type="text" className={style.inputRegister} />
           </div>
+          <button className={style.buttonRegister}>Registrarse</button>
         </form>
       </div>
     </div>
