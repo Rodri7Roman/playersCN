@@ -8,6 +8,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import store from "./redux/store";
 import Jugadores from "./components/Jugadores/Jugadores";
 import Jugador from "./components/Jugador/Jugador";
+import Register from "./components/Register/Register";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/equipos/1" element={<Equipo />} />
             <Route exact path="/jugadores" element={<Jugadores />} />
             <Route exact path="/jugadores/1" element={<Jugador />} />
+            <Route exact path="/registrarse" element={<Register />} />
           </Routes>
         </div>
       </BrowserRouter>
