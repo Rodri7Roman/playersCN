@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Register.module.css";
 import logo from "../../assets/icons/logo_GC2.png";
 import "./register.css";
 import { NavLink } from "react-router-dom";
+import { registerUser } from "../../redux/actions/users/user";
+import { useDispatch } from "react-redux";
+import { validate } from "./validator";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [inputs, setInputs] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+  const [inputErrors, setInputErrors] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      dispatch(registerUser(inputs));
+    }
+  }, [inputErrors]);
+
+  // ---------- HANDLE CHANGE -------------
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // ---------- SUBMIT REGISTER -------------
+  const submitRegister = (event) => {
+    event.preventDefault();
+    setInputErrors(validate(inputs));
+    setIsSubmit(true);
+  };
+
   return (
     <div className={style.containerRegister}>
       <div className={style.containerLogo}></div>
@@ -18,22 +52,42 @@ const Register = () => {
             <label htmlFor="" className={style.labelRegister}>
               Correo Electrónico{" "}
             </label>
-            <input type="text" className={style.inputRegister} />
+            <input
+              type="text"
+              name="email"
+              onChange={handleChange}
+              className={style.inputRegister}
+            />
+            <span className={style.span}>{inputErrors.email}</span>
           </div>
           <div className={style.containerInputLabel}>
             <label htmlFor="" className={style.labelRegister}>
               Nombre de usuario{" "}
             </label>
-            <input type="text" className={style.inputRegister} />
+            <input
+              type="text"
+              name="username"
+              className={style.inputRegister}
+              onChange={handleChange}
+            />
+            <span className={style.span}>{inputErrors.username}</span>
           </div>
           <div className={style.containerInputLabel}>
             <label htmlFor="" className={style.labelRegister}>
               Contraseña{" "}
             </label>
-            <input type="text" className={style.inputRegister} />
+            <input
+              type="text"
+              name="password"
+              className={style.inputRegister}
+              onChange={handleChange}
+            />
+            <span className={style.span}>{inputErrors.password}</span>
           </div>
           <div className={style.containerButtons}>
-            <button className={style.buttonRegister}>Registrarse</button>
+            <button onClick={submitRegister} className={style.buttonRegister}>
+              Registrarse
+            </button>
             <NavLink to={"/ingresar"}>
               <button className={style.buttonIniciar}>Iniciar Sesión</button>
             </NavLink>
