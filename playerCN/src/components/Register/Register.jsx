@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Register.module.css";
 import logo from "../../assets/icons/logo_GC2.png";
 import "./register.css";
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   return (
@@ -31,7 +32,12 @@ const Register = () => {
             </label>
             <input type="text" className={style.inputRegister} />
           </div>
-          <button className={style.buttonRegister}>Registrarse</button>
+          <div className={style.containerButtons}>
+            <button className={style.buttonRegister}>Registrarse</button>
+            <NavLink to={"/ingresar"}>
+              <button className={style.buttonIniciar}>Iniciar Sesión</button>
+            </NavLink>
+          </div>
         </form>
       </div>
     </div>

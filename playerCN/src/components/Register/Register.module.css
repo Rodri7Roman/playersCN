@@ -64,6 +64,12 @@
   box-shadow: -1px 10px 5px -4px var(--color-blue);
 }
 
+.containerButtons button {
+  margin-top: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
 .buttonRegister {
   width: 120px;
   height: 44px;
@@ -75,4 +81,23 @@
   -webkit-box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.75);
+}
+
+.buttonIniciar {
+  width: 120px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  font-size: 1.6rem;
+  -webkit-box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 10px 5px -4px rgba(0, 0, 0, 0.75);
+}
+
+.containerButtons button:hover {
+  background-color: var(--color-blue-light);
+  border: 1px solid var(--color-blue);
+  color: var(--color-white);
 }
