@@ -3,7 +3,7 @@ import style from "./Register.module.css";
 import logo from "../../assets/icons/logo_GC2.png";
 import "./register.css";
 import { NavLink } from "react-router-dom";
-import { registerUser } from "../../redux/actions/users/user";
+import { getUser, registerUser } from "../../redux/actions/users/user";
 import { useDispatch } from "react-redux";
 import { validate } from "./validator";
 
