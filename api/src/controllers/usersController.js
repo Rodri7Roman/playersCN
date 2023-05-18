@@ -18,12 +18,12 @@ const postUser = async (newUser) => {
       where: { username: newUser.username },
     });
     if (existingEmail) {
-      return "Email ya registrado";
+      return "Email en uso.";
     } else if (existingUsername) {
       return "Nombre de usuario en uso";
     } else {
       const createdUser = await User.create(newUser);
-      return createdUser;
+      return "Registrado con éxito.";
     }
   } catch (error) {
     return error.message;
