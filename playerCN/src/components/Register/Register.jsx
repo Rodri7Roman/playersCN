@@ -36,6 +36,7 @@ const Register = () => {
     event.preventDefault();
     setInputErrors(validate(inputs));
     setIsSubmit(true);
+    // setInputs({ email: "", username: "", password: "" });
   };
 
   return (
@@ -54,6 +55,7 @@ const Register = () => {
             <input
               type="text"
               name="email"
+              value={inputs.email}
               onChange={handleChange}
               className={style.inputRegister}
             />
@@ -66,6 +68,7 @@ const Register = () => {
             <input
               type="text"
               name="username"
+              value={inputs.username}
               className={style.inputRegister}
               onChange={handleChange}
             />
@@ -78,6 +81,7 @@ const Register = () => {
             <input
               type="password"
               name="password"
+              value={inputs.password}
               className={style.inputRegister}
               onChange={handleChange}
             />
