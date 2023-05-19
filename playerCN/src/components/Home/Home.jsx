@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
+    <div className={style.containerPpal}>
       <NavBar />
       <div className={style.containerHome} id="inicio">
         <div className={style.containerInicio}>

@@ -6,7 +6,7 @@ import Profile from "../Equipo/Profile/Profile"
 
 const Jugador = (props) => {
   return (
-    <div>
+    <div className={style.containerPpal}>
       <NavBar />
       <div className={style.containerJugador} id="inicio">
         <div className={style.containerInicio}>

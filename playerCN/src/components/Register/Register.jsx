@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./Register.module.css";
 import logo from "../../assets/icons/logo_GC2.png";
-import "./register.css";
 import { NavLink } from "react-router-dom";
 import { getUser, registerUser } from "../../redux/actions/users/user";
 import { useDispatch } from "react-redux";

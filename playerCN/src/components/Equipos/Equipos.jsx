@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 const Equipos = (props) => {
   return (
-    <div>
+    <div className={style.containerPpal}>
       <NavBar />
       <div className={style.containerEquipos}>
         <div className={style.containerSearch}>

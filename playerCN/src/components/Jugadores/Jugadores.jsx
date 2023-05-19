@@ -7,7 +7,7 @@ import Cards from "./Cards/Cards";
 
 const Jugadores = () => {
   return (
-    <div>
+    <div className={style.containerPpal}>
       <NavBar />
       <div className={style.containerJugadores}>
         <div className={style.containerSearch}>

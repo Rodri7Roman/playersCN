@@ -7,7 +7,7 @@ import Profile from "./Profile/Profile";
 import Posts from "../Posts/Posts";
 const Equipo = (props) => {
   return (
-    <div>
+    <div className={style.containerPpal}>
       <NavBar />
       <div className={style.containerEquipo} id="inicio">
         <div className={style.containerInicio}>
