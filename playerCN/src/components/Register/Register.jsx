@@ -76,7 +76,7 @@ const Register = () => {
               Contraseña{" "}
             </label>
             <input
-              type="text"
+              type="password"
               name="password"
               className={style.inputRegister}
               onChange={handleChange}
