@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../assets/icons/Logo_GC2.svg";
 import style from "./NavBar.module.css";
+import perfil from "../../assets/imgs/logoEquipo.jpg";
 import { NavLink } from "react-router-dom";
 
 const NavBar = (props) => {
@@ -56,7 +57,16 @@ const NavBar = (props) => {
         </ul>
       </div>
       <div>
-        <NavLink className={`nav-link ${style.containerTextLinkNav}`}>OTRA COSA</NavLink>
+        <NavLink className={`nav-link ${style.containerInfoUser}`}>
+          {" "}
+          <div className={style.ContainerFotoUsuario}>
+            <img src={perfil} alt="" className={style.imgPerfil} />
+            <div className={style.containerNameUserNavBar}>
+              <h2>Imperials</h2>
+              <h3>@ImperialGaming_</h3>
+            </div>
+          </div>
+        </NavLink>
       </div>
     </nav>
   );

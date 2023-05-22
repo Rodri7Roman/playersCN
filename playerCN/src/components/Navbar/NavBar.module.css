@@ -69,7 +69,40 @@
   padding-left: 16px;
   font-size: 2rem;
   color: #ffffff;
+}
 
+.containerInfoUser {
+  margin-left: 10px;
+  padding-left: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 50px;
+}
+.containerInfoUser:hover {
+  background-color: #40516925;
+}
+
+.ContainerFotoUsuario {
+  display: flex;
+  align-items: center;
+}
+
+.imgPerfil {
+  border-radius: 54px;
+  width: 64px;
+  height: 64px;
+}
+
+.containerNameUserNavBar {
+  padding-left: 12px;
+}
+.containerNameUserNavBar h2 {
+  color: var(--color-white);
+  font-size: 1.6rem;
+}
+.containerNameUserNavBar h3 {
+  color: var(--color-grey);
+  font-size: 1.4rem;
 }
 
 @media screen and (max-width: 1410px) {
