@@ -1,3 +1,4 @@
+const { hash } = require("bcrypt");
 const { User } = require("../db");
 const { SignJWT, jwtVerify } = require("jose");
 
@@ -12,17 +13,23 @@ const getAllUsers = async () => {
   }
 };
 
-const registerUser = async (newUser) => {
+const registerUser = async ({ email, username, password, admin }) => {
   const existingEmail = await User.findOne({
-    where: { email: newUser.email },
+    where: { email: email },
   });
   const existingUsername = await User.findOne({
-    where: { username: newUser.username },
+    where: { username: username },
   });
   if (existingEmail) throw new Error("Email en uso.");
   else if (existingUsername) throw new Error("Nombre de usuario en uso");
   else {
-    const createdUser = await User.create(newUser);
+    const hashedPassword = await hash(password, 12);
+    const createdUser = await User.create({
+      email,
+      username,
+      password: hashedPassword,
+      admin,
+    });
     return createdUser;
   }
 };

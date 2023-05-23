@@ -69,4 +69,14 @@ usersRouter.post("/autorizado", async (req, res) => {
   }
 });
 
+usersRouter.put("/update", async (req, res) => {
+
+});
+
+
+usersRouter.delete("/eliminar", async (req, res) => {
+  
+});
+
+
 module.exports = usersRouter;
