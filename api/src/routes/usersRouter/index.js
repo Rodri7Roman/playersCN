@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { getAllUsers, postUser } = require("../../controllers/usersController");
+const {singJWT} = require("jose")
 
 const usersRouter = Router();
 

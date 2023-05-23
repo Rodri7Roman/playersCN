@@ -2,7 +2,9 @@ const { User } = require("../db");
 
 const getAllUsers = async () => {
   try {
-    const allUsers = await User.findAll();
+    const allUsers = await User.findAll({
+      attributes: { exclude: "password" },
+    });
     return allUsers;
   } catch (error) {
     return error.message;

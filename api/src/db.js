@@ -32,7 +32,10 @@ let capsEntries = entries.map((entry) => [
 
 db.models = Object.fromEntries(capsEntries);
 
-const { User } = db.models;
+const { User, Post } = db.models;
+
+User.hasMany(Post);
+Post.belongsTo(User);
 
 module.exports = {
   ...db.models,
