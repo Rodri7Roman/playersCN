@@ -11,7 +11,7 @@ const getAllUsers = async () => {
   }
 };
 
-const postUser = async (newUser) => {
+const registerUser = async (newUser) => {
   try {
     const existingEmail = await User.findOne({
       where: { email: newUser.email },
@@ -32,7 +32,24 @@ const postUser = async (newUser) => {
   }
 };
 
+const loginUser = async (user, res) => {
+  try {
+    const existingUsername = await User.findOne({
+      where: { username: user.username },
+    });
+    const samePassword = await User.findOne({
+      where: { password: user.password },
+    });
+    if (!existingUsername) throw new Error("Nombre de usuario inexistente.");
+    if (!samePassword) throw new Error("Contraseña incorrecta");
+    return `${user.username} Autenticado`;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 module.exports = {
   getAllUsers,
-  postUser,
+  registerUser,
+  loginUser,
 };
