@@ -1,4 +1,5 @@
 const { User } = require("../db");
+const { SignJWT, jwtVerify } = require("jose");
 
 const getAllUsers = async () => {
   try {
@@ -30,17 +31,49 @@ const authByUsernamePwd = async (user) => {
   const existingUsername = await User.findOne({
     where: { username: user.username },
   });
-  const samePassword = await User.findOne({
+  const userFound = await User.findOne({
     where: { password: user.password, username: user.username },
   });
-  if (!existingUsername || !samePassword)
+  if (!existingUsername || !userFound)
     throw new Error("Nombre de usuario o contraseña incorrecta.");
+  const id = userFound.id;
+  const jwtConstructor = new SignJWT({ id });
+  const encoder = new TextEncoder();
+  const jwt = await jwtConstructor
+    .setProtectedHeader({
+      alg: "HS256",
+      typ: "JWT",
+    })
+    .setIssuedAt()
+    .setExpirationTime("1h")
+    .sign(encoder.encode(process.env.JWT_PRIVATEKEY));
 
-  return samePassword;
+  return jwt;
+};
+
+const verifyToken = async (authorization) => {
+  const encoder = new TextEncoder();
+  const jwtData = await jwtVerify(
+    authorization,
+    encoder.encode(process.env.JWT_PRIVATEKEY)
+  );
+  return jwtData;
+};
+
+const getUser = (userId) => {
+  const user = User.findOne({
+    where: {
+      id: userId,
+    },
+  });
+  if (!user) throw new Error("Usuario inexistente");
+  return user;
 };
 
 module.exports = {
   getAllUsers,
   registerUser,
   authByUsernamePwd,
+  verifyToken,
+  getUser,
 };

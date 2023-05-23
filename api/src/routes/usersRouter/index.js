@@ -3,8 +3,9 @@ const {
   getAllUsers,
   registerUser,
   authByUsernamePwd,
+  verifyToken,
+  getUser,
 } = require("../../controllers/usersController");
-
 const usersRouter = Router();
 
 usersRouter.get("/", async (req, res) => {
@@ -28,16 +29,28 @@ usersRouter.post("/registrarse", async (req, res) => {
   }
 });
 
-usersRouter.post("/autenticado", async (req, res) => {
+usersRouter.post("/ingresar", async (req, res) => {
   try {
     const { username, password } = req.body;
     if (!username || !password) {
       return res.status(400).send("Faltan datos");
     }
-    const responseLogin = await authByUsernamePwd({ username, password });
-    return res.status(200).send(`${username} autenticado`);
+    const token = await authByUsernamePwd({ username, password });
+    return res.send({ token });
   } catch (error) {
     return res.status(401).json({ error: error.message });
+  }
+});
+
+usersRouter.get("/perfil", async (req, res) => {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) return res.status(401).send("No estas autenticado");
+    const { payload } = await verifyToken(authorization);
+    const user = await getUser(payload.id);
+    return res.status(200).send(user);
+  } catch (error) {
+    res.status(401).json({ error: error.message });
   }
 });
 
