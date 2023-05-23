@@ -62,10 +62,21 @@ const authByUsernamePwd = async (user) => {
 const verifyToken = async (authorization) => {
   const encoder = new TextEncoder();
   const jwtData = await jwtVerify(
-    authorization.split(' ')[1],
+    authorization.split(" ")[1],
     encoder.encode(process.env.JWT_PRIVATEKEY)
   );
   return jwtData;
+};
+
+const updateData = async (id, data) => {
+  const user = await User.findOne({ where: { id: id } });
+  if (!user) throw new Error("Usuario no encontrado");
+  const updatedUser = await User.update(data, {
+    where: {
+      id: id,
+    },
+  });
+  return "Usuario Actualizado";
 };
 
 const getUser = (userId) => {
@@ -84,4 +95,5 @@ module.exports = {
   authByUsernamePwd,
   verifyToken,
   getUser,
+  updateData,
 };

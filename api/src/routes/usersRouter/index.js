@@ -5,6 +5,7 @@ const {
   authByUsernamePwd,
   verifyToken,
   getUser,
+  updateData,
 } = require("../../controllers/usersController");
 const usersRouter = Router();
 
@@ -69,14 +70,19 @@ usersRouter.post("/autorizado", async (req, res) => {
   }
 });
 
-usersRouter.put("/update", async (req, res) => {
-
+usersRouter.put("/updateUsername", async (req, res) => {
+  try {
+    const data= req.body;
+    const { authorization } = req.headers;
+    if (!authorization) return res.status(401).send("No estas autenticado");
+    const { payload } = await verifyToken(authorization);
+    const user = await updateData(payload.id, data);
+    return res.status(200).send(user);
+  } catch (error) {
+    res.status(401).json({ error: error.message });
+  }
 });
 
-
-usersRouter.delete("/eliminar", async (req, res) => {
-  
-});
-
+usersRouter.delete("/eliminar", async (req, res) => {});
 
 module.exports = usersRouter;
