@@ -68,23 +68,55 @@ const verifyToken = async (authorization) => {
   return jwtData;
 };
 
-const updateData = async (id, data) => {
-  const user = await User.findOne({ where: { id: id } });
+const updateUsername = async (id, username) => {
+  const user = await User.findByPk(id);
   if (!user) throw new Error("Usuario no encontrado");
-  const updatedUser = await User.update(data, {
-    where: {
-      id: id,
-    },
-  });
+  user.username = username;
+  await user.save();
   return "Usuario Actualizado";
 };
 
-const getUser = (userId) => {
-  const user = User.findOne({
-    where: {
-      id: userId,
-    },
-  });
+const updateEmail = async (id, email, password) => {
+  const user = await User.findByPk(id);
+  if (!user) throw new Error("Usuario no encontrado");
+
+  const checkPassword = await compare(password, user.password);
+  if (!checkPassword) throw new Error("Credenciales incorrectas.");
+
+  user.email = email;
+  await user.save();
+
+  return "Email Actualizado";
+};
+
+const updatePassword = async (id, oldPassword, newPassword) => {
+  const user = await User.findByPk(id);
+  if (!user) throw new Error("Usuario no encontrado");
+
+  const checkPassword = await compare(oldPassword, user.password);
+  if (!checkPassword) throw new Error("Credenciales incorrectas.");
+
+  const hashedPassword = await hash(newPassword, 12);
+  user.password = hashedPassword;
+  await user.save();
+
+  return "Contraseña Actualizada";
+};
+
+const eliminarUsuario = async (id, password) => {
+  const user = await User.findByPk(id);
+  if (!user) throw new Error("Usuario no encontrado");
+
+  const checkPassword = await compare(password, user.password);
+  if (!checkPassword) throw new Error("Credenciales incorrectas.");
+
+  await user.destroy();
+
+  return "Usuario Eliminado";
+};
+
+const getUser = async (userId) => {
+  const user = await User.findByPk(userId);
   if (!user) throw new Error("Usuario inexistente");
   return user;
 };
@@ -95,5 +127,8 @@ module.exports = {
   authByUsernamePwd,
   verifyToken,
   getUser,
-  updateData,
+  updateUsername,
+  updateEmail,
+  updatePassword,
+  eliminarUsuario,
 };
