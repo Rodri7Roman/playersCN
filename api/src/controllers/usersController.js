@@ -1,6 +1,7 @@
 const { hash } = require("bcrypt");
 const { User } = require("../db");
 const { SignJWT, jwtVerify } = require("jose");
+const { compare } = require("bcrypt");
 
 const getAllUsers = async () => {
   try {
@@ -38,12 +39,12 @@ const authByUsernamePwd = async (user) => {
   const existingUsername = await User.findOne({
     where: { username: user.username },
   });
-  const userFound = await User.findOne({
-    where: { password: user.password, username: user.username },
-  });
-  if (!existingUsername || !userFound)
-    throw new Error("Nombre de usuario o contraseña incorrecta.");
-  const id = userFound.id;
+  if (!existingUsername) throw new Error("Credenciales incorrectas.");
+
+  const checkPassword = await compare(user.password, existingUsername.password);
+  if (!checkPassword) throw new Error("Credenciales incorrectas.");
+
+  const id = existingUsername.id;
   const jwtConstructor = new SignJWT({ id });
   const encoder = new TextEncoder();
   const jwt = await jwtConstructor
@@ -52,7 +53,7 @@ const authByUsernamePwd = async (user) => {
       typ: "JWT",
     })
     .setIssuedAt()
-    .setExpirationTime("1h")
+    .setExpirationTime("7d")
     .sign(encoder.encode(process.env.JWT_PRIVATEKEY));
 
   return jwt;
@@ -61,7 +62,7 @@ const authByUsernamePwd = async (user) => {
 const verifyToken = async (authorization) => {
   const encoder = new TextEncoder();
   const jwtData = await jwtVerify(
-    authorization,
+    authorization.split(' ')[1],
     encoder.encode(process.env.JWT_PRIVATEKEY)
   );
   return jwtData;

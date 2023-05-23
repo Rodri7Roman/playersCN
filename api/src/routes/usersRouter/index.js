@@ -23,7 +23,7 @@ usersRouter.post("/registrarse", async (req, res) => {
     if (!email || !username || !password)
       return res.status(400).send("Faltan datos");
     const createUser = await registerUser({ email, username, password, admin });
-    return res.status(200).send(createUser);
+    return res.status(201).send(createUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
