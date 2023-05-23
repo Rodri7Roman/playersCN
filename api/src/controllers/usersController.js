@@ -32,7 +32,10 @@ const registerUser = async (newUser) => {
   }
 };
 
-const loginUser = async (user, res) => {
+
+
+
+const loginUser = async (user) => {
   try {
     const existingUsername = await User.findOne({
       where: { username: user.username },
