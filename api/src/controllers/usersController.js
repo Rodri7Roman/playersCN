@@ -12,47 +12,35 @@ const getAllUsers = async () => {
 };
 
 const registerUser = async (newUser) => {
-  try {
-    const existingEmail = await User.findOne({
-      where: { email: newUser.email },
-    });
-    const existingUsername = await User.findOne({
-      where: { username: newUser.username },
-    });
-    if (existingEmail) {
-      return "Email en uso.";
-    } else if (existingUsername) {
-      return "Nombre de usuario en uso";
-    } else {
-      const createdUser = await User.create(newUser);
-      return "Registrado con éxito.";
-    }
-  } catch (error) {
-    return error.message;
+  const existingEmail = await User.findOne({
+    where: { email: newUser.email },
+  });
+  const existingUsername = await User.findOne({
+    where: { username: newUser.username },
+  });
+  if (existingEmail) throw new Error("Email en uso.");
+  else if (existingUsername) throw new Error("Nombre de usuario en uso");
+  else {
+    const createdUser = await User.create(newUser);
+    return createdUser;
   }
 };
 
+const authByUsernamePwd = async (user) => {
+  const existingUsername = await User.findOne({
+    where: { username: user.username },
+  });
+  const samePassword = await User.findOne({
+    where: { password: user.password, username: user.username },
+  });
+  if (!existingUsername || !samePassword)
+    throw new Error("Nombre de usuario o contraseña incorrecta.");
 
-
-
-const loginUser = async (user) => {
-  try {
-    const existingUsername = await User.findOne({
-      where: { username: user.username },
-    });
-    const samePassword = await User.findOne({
-      where: { password: user.password },
-    });
-    if (!existingUsername) throw new Error("Nombre de usuario inexistente.");
-    if (!samePassword) throw new Error("Contraseña incorrecta");
-    return `${user.username} Autenticado`;
-  } catch (error) {
-    return error.message;
-  }
+  return samePassword;
 };
 
 module.exports = {
   getAllUsers,
   registerUser,
-  loginUser,
+  authByUsernamePwd,
 };
