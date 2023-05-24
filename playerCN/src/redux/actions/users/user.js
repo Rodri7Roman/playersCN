@@ -25,37 +25,19 @@ export const registerUser = (data) => {
 };
 
 export const ingresar = (data) => {
-  return async function () {
+  return async function (dispatch) {
     try {
       const json = await axios.post("/users/ingresar", data);
       console.log(json);
       ToastSuccess.fire({
         title: "Iniciando sesión...",
       });
-      if (json.data !== "Registrado con éxito.") {
-        window.setTimeout(() => {
-          window.location.href = "/";
-        }, 800);
-      }
+      window.localStorage.setItem("token", json.data.token);
     } catch (error) {
       return ToastError.fire({
         icon: "error",
         title: error.response.data.error,
       });
-    }
-  };
-};
-
-export const getUser = () => {
-  return async (dispatch) => {
-    try {
-      const response = await axios.get("/users");
-      return dispatch({
-        type: GET_USER,
-        payload: response.data,
-      });
-    } catch (error) {
-      console.log(error);
     }
   };
 };

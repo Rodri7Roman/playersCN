@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Ingresar.module.css";
-import logo from "../../assets/icons/logo_GC2.png";
+import logo from "../../assets/icons/logo.png";
 import robot from "../../assets/imgs/robot2.png";
 import { NavLink } from "react-router-dom";
 import { validate } from "./validator";

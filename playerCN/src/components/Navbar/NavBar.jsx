@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/icons/Logo_GC2.svg";
+import logo from "../../assets/icons/logo.png";
 import style from "./NavBar.module.css";
 import perfil from "../../assets/imgs/logoEquipo.jpg";
 import { NavLink } from "react-router-dom";

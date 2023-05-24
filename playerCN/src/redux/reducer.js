@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   user: {},
+  token: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -21,7 +22,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_USER: {
       return {
         ...state,
-        user: action.payload,
+        token: action.payload,
       };
     }
     default:
