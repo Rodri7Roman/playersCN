@@ -3,9 +3,11 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const routes = require("./routes/index.js");
+const cors = require("cors");
 
 const server = express();
 
+server.use(cors())
 server.use(express.json());
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
@@ -24,13 +26,12 @@ server.use((req, res, next) => {
 
 server.use("/", routes);
 
-
-server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+server.use((err, req, res, next) => {
+  // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);
   res.status(status).send(message);
 });
-
 
 module.exports = server;

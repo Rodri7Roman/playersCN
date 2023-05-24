@@ -1,13 +1,20 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Home.module.css";
 import NavBar from "../Navbar/NavBar";
 import Prompt from "./Prompt/Prompt";
 import Posts from "../Posts/Posts";
 import { NavLink } from "react-router-dom";
+import { getUser } from "../../redux/actions/users/user";
 
 const Home = () => {
-  const user = useSelector((state) => state.token);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    dispatch(getUser(token));
+  }, []);
+
   console.log(user);
   return (
     <div className={style.containerPpal}>

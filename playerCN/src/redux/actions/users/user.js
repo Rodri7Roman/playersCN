@@ -41,3 +41,21 @@ export const ingresar = (data) => {
     }
   };
 };
+
+export const getUser = (token) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get("/users/perfil", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return dispatch({
+        type: GET_USER,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
