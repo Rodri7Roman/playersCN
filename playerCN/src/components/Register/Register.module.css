@@ -1,6 +1,12 @@
 .containerRegister {
   display: flex;
   justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 40px;
+  border: 1px solid white;
 }
 .containerLogo {
   width: 50%;
@@ -8,14 +14,13 @@
   text-align: center;
 }
 .containerLogo img {
-  height: 100vh;
   width: 100%;
+  min-height: 730px;
   object-fit: cover;
 }
 
 .containerForm {
   width: 50%;
-  height: 100vh;
   background-color: var(--color-blue-light);
   display: flex;
   align-items: center;
