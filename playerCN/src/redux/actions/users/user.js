@@ -28,11 +28,15 @@ export const ingresar = (data) => {
   return async function (dispatch) {
     try {
       const json = await axios.post("/users/ingresar", data);
-      console.log(json);
       ToastSuccess.fire({
         title: "Iniciando sesión...",
       });
       window.localStorage.setItem("token", json.data.token);
+      if (json.data.token) {
+        window.setTimeout(() => {
+          window.location.href = "/";
+        }, 800);
+      }
     } catch (error) {
       return ToastError.fire({
         icon: "error",
