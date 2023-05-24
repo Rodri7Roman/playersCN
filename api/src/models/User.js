@@ -29,6 +29,7 @@ module.exports = (sequelize) => {
       },
       isActive: {
         type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
       admin: {
         type: DataTypes.BOOLEAN,

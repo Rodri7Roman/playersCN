@@ -9,7 +9,7 @@ const ToastSuccess = Swal.mixin({
     title: "title-alert",
   },
   showConfirmButton: false,
-  timer: 2000,
+  timer: 800,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener("mouseenter", Swal.stopTimer);

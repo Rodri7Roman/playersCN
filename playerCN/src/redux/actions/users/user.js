@@ -6,19 +6,41 @@ import ToastSuccess from "../../../components/Alerts/ToastSuccess";
 export const registerUser = (data) => {
   return async function () {
     try {
-      const json = await axios.post("/users", data);
+      const json = await axios.post("/users/registrarse", data);
       ToastSuccess.fire({
         title: json.data,
       });
       if (json.data === "Registrado con éxito.") {
         window.setTimeout(() => {
-          window.location.href = "/";
-        }, 2000);
+          window.location.href = "/ingresar";
+        }, 800);
       }
     } catch (error) {
       return ToastError.fire({
         icon: "error",
-        title: error.message,
+        title: error.response.data.error,
+      });
+    }
+  };
+};
+
+export const ingresar = (data) => {
+  return async function () {
+    try {
+      const json = await axios.post("/users/ingresar", data);
+      console.log(json);
+      ToastSuccess.fire({
+        title: "Iniciando sesión...",
+      });
+      if (json.data !== "Registrado con éxito.") {
+        window.setTimeout(() => {
+          window.location.href = "/";
+        }, 800);
+      }
+    } catch (error) {
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data.error,
       });
     }
   };

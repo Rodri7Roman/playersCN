@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import style from "./Ingresar.module.css";
 import logo from "../../assets/icons/logo_GC2.png";
 import robot from "../../assets/imgs/robot2.png";
 import { NavLink } from "react-router-dom";
-
+import { validate } from "./validator";
+import { ingresar } from "../../redux/actions/users/user";
 const Ingresar = (props) => {
+  const dispatch = useDispatch();
+  const [isSubmit, setIsSubmit] = useState(false);
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
   });
   const [inputErrors, setInputErrors] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      dispatch(ingresar(inputs));
+    }
+  }, [inputErrors]);
 
   // ---------- HANDLE CHANGE -------------
   const handleChange = (e) => {
@@ -22,6 +32,11 @@ const Ingresar = (props) => {
 
   // ---------- SUBMIT INGRESAR -------------
 
+  const submitIngresar = (event) => {
+    event.preventDefault();
+    setInputErrors(validate(inputs));
+    setIsSubmit(true);
+  };
   return (
     <div className={style.containerRegister}>
       <div className={style.containerLogo}>
@@ -61,12 +76,11 @@ const Ingresar = (props) => {
             <span className={style.span}>{inputErrors.password}</span>
           </div>
           <div className={style.containerButtons}>
+            <button onClick={submitIngresar} className={style.buttonIniciar}>
+              Iniciar Sesión
+            </button>
             <NavLink to={"/registrarse"}>
               <button className={style.buttonRegister}>Registrarse </button>
-            </NavLink>
-
-            <NavLink to={"/ingresar"}>
-              <button className={style.buttonIniciar}>Iniciar Sesión</button>
             </NavLink>
           </div>
         </form>
