@@ -28,7 +28,7 @@ const Prompt = (props) => {
           name="post"
           id="post"
           rows={4}
-          placeholder="¿Qué estás pensando?"
+          placeholder="Qué estás pensando?"
         ></textarea>
         <div className={style.containerEnviarIcon}>
           <div className={style.containerIcon}>

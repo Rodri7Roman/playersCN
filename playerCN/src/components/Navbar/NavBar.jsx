@@ -1,10 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
 import logo from "../../assets/icons/logo.png";
 import style from "./NavBar.module.css";
 import perfil from "../../assets/imgs/logoEquipo.jpg";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../../redux/actions/users/user";
 
 const NavBar = (props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    dispatch(getUser(token));
+  }, []);
   return (
     <nav className={`${style.navBar}  ${style.bg}`}>
       <div className={style.containerLogo}>
@@ -62,8 +71,10 @@ const NavBar = (props) => {
           <div className={style.ContainerFotoUsuario}>
             <img src={perfil} alt="" className={style.imgPerfil} />
             <div className={style.containerNameUserNavBar}>
-              <h2>Imperials</h2>
-              <h3>@ImperialGaming_</h3>
+              <h2>
+                {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
+              </h2>
+              <h3>{user.email}</h3>
             </div>
           </div>
         </NavLink>

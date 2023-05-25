@@ -5,17 +5,8 @@ import NavBar from "../Navbar/NavBar";
 import Prompt from "./Prompt/Prompt";
 import Posts from "../Posts/Posts";
 import { NavLink } from "react-router-dom";
-import { getUser } from "../../redux/actions/users/user";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    dispatch(getUser(token));
-  }, []);
-
-  console.log(user);
   return (
     <div className={style.containerPpal}>
       <NavBar />
