@@ -42,6 +42,7 @@ const Register = () => {
 
   return (
     <div className={style.containerRegister}>
+      <span className={style.spanContainer}></span>
       <div className={style.containerLogo}>
         <img src={robot} alt="" />
       </div>
