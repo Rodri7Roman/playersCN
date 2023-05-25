@@ -72,9 +72,10 @@ const NavBar = (props) => {
             <img src={perfil} alt="" className={style.imgPerfil} />
             <div className={style.containerNameUserNavBar}>
               <h2>
-                {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
+                {user.username?.charAt(0).toUpperCase() +
+                  user.username?.slice(1)}
               </h2>
-              <h3>{user.email}</h3>
+              <h3>{user?.email}</h3>
             </div>
           </div>
         </NavLink>
