@@ -10,6 +10,7 @@ import Jugadores from "./components/Jugadores/Jugadores";
 import Jugador from "./components/Jugador/Jugador";
 import Register from "./components/Register/Register";
 import Ingresar from "./components/Ingresar/Ingresar";
+import MyProfile from "./components/myProfile/myProfile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/jugadores/1" element={<Jugador />} />
             <Route exact path="/registrarse" element={<Register />} />
             <Route exact path="/ingresar" element={<Ingresar />} />
+            <Route exact path="/perfil" element={<MyProfile />} />
           </Routes>
         </div>
       </BrowserRouter>

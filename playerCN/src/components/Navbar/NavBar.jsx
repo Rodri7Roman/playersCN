@@ -66,16 +66,29 @@ const NavBar = (props) => {
         </ul>
       </div>
       <div>
-        <NavLink className={`nav-link ${style.containerInfoUser}`}>
+        <NavLink
+          to={"/perfil"}
+          className={`nav-link ${style.containerInfoUser}`}
+        >
           {" "}
           <div className={style.ContainerFotoUsuario}>
             <img src={perfil} alt="" className={style.imgPerfil} />
             <div className={style.containerNameUserNavBar}>
-              <h2>
-                {user.username?.charAt(0).toUpperCase() +
-                  user.username?.slice(1)}
-              </h2>
-              <h3>{user?.email}</h3>
+              <div className={style.containerUsername}>
+                <h2>
+                  {user.username?.charAt(0).toUpperCase() +
+                    user.username?.slice(1)}
+                </h2>
+                <h3>{user?.email}</h3>
+              </div>
+
+              <div className={style.containerIconSettings}>
+                <box-icon
+                  type="solid"
+                  name="cog"
+                  color="var(--color-grey)"
+                ></box-icon>
+              </div>
             </div>
           </div>
         </NavLink>

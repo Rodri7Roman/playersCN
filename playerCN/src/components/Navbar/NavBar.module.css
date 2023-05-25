@@ -95,14 +95,28 @@
 
 .containerNameUserNavBar {
   padding-left: 12px;
+  padding-right: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.containerNameUserNavBar h2 {
+.containerUsername h2 {
   color: var(--color-white);
   font-size: 1.6rem;
 }
-.containerNameUserNavBar h3 {
+.containerUsername h3 {
   color: var(--color-grey);
   font-size: 1.4rem;
+}
+
+.containerIconSettings {
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.containerIconSettings:hover {
+  background-color: #4051694f;
 }
 
 @media screen and (max-width: 1410px) {
