@@ -1,4 +1,11 @@
-import { GET_USER, UPDATE_USER, LOGIN, REFRESH, REGISTER } from "./types";
+import {
+  GET_USER,
+  UPDATE_USER,
+  LOGIN,
+  REFRESH,
+  REGISTER,
+  LOGOUT,
+} from "./types";
 import axios from "axios";
 import ToastError from "../../../components/Alerts/ToastError";
 import ToastSuccess from "../../../components/Alerts/ToastSuccess";
@@ -61,5 +68,15 @@ export const getUser = (token) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const logout = () => {
+  return async function (dispatch) {
+    localStorage.removeItem("token")
+    return dispatch({
+      type: LOGOUT,
+      payload: {},
+    });
   };
 };

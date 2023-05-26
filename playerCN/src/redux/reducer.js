@@ -4,6 +4,7 @@ import {
   LOGIN,
   REGISTER,
   REFRESH,
+  LOGOUT,
 } from "./actions/users/types";
 
 const initialState = {
@@ -19,6 +20,12 @@ const rootReducer = (state = initialState, action) => {
       };
     }
     case GET_USER: {
+      return {
+        ...state,
+        user: action.payload,
+      };
+    }
+    case LOGOUT: {
       return {
         ...state,
         user: action.payload,

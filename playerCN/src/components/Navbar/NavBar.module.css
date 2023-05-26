@@ -121,7 +121,12 @@
 .ulCerrarSesion {
   background-color: var(--color-blue-light);
 }
-
+.ulCerrarSesion button{
+  background-color: var(--color-blue-light);
+  outline: none;
+  border: none;
+  width: 100%;
+}
 
 .cerrarSesion {
   padding: 8px;

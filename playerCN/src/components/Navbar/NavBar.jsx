@@ -5,15 +5,23 @@ import style from "./NavBar.module.css";
 import perfil from "../../assets/imgs/logoEquipo.jpg";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../../redux/actions/users/user";
+import { getUser, logout } from "../../redux/actions/users/user";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   useEffect(() => {
     const token = localStorage.getItem("token");
     dispatch(getUser(token));
   }, []);
+
+  const submitCerrarSesion = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    navigate("/ingresar");
+  };
   return (
     <nav className={`${style.navBar}  ${style.bg}`}>
       <div className={style.containerLogo}>
@@ -70,14 +78,13 @@ const NavBar = (props) => {
           to={"/perfil"}
           className={`nav-link ${style.containerInfoUser}`}
         >
-          {" "}
           <div className={style.ContainerFotoUsuario}>
             <img src={perfil} alt="" className={style.imgPerfil} />
             <div className={style.containerNameUserNavBar}>
               <div className={style.containerUsername}>
                 <h2>
                   {user.username?.charAt(0).toUpperCase() +
-                    user.username?.slice(1)}
+                    user.username?.slice(1) || ""}
                 </h2>
                 <h3>{user?.email}</h3>
               </div>
@@ -98,22 +105,22 @@ const NavBar = (props) => {
                   ></box-icon>
                 </button>
                 <ul className={`dropdown-menu ${style.ulCerrarSesion}`}>
-                  <li>
+                  <button onClick={submitCerrarSesion}>
                     <a
                       className={`dropdown-item ${style.cerrarSesion}`}
                       href="#"
                     >
                       Cerrar Sesión
                     </a>
-                  </li>
-                  <li>
+                  </button>
+                  <button>
                     <a
                       className={`dropdown-item ${style.cerrarSesion}`}
                       href="#"
                     >
                       Editar perfil
                     </a>
-                  </li>
+                  </button>
                 </ul>
               </div>
             </div>
