@@ -14,6 +14,7 @@ const NavBar = (props) => {
   const user = useSelector((state) => state.user);
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if (!token) navigate("/ingresar");
     dispatch(getUser(token));
   }, []);
 
