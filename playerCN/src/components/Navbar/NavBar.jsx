@@ -106,6 +106,14 @@ const NavBar = (props) => {
                       Cerrar Sesión
                     </a>
                   </li>
+                  <li>
+                    <a
+                      className={`dropdown-item ${style.cerrarSesion}`}
+                      href="#"
+                    >
+                      Editar perfil
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
