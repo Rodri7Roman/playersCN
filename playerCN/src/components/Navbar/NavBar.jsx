@@ -82,12 +82,31 @@ const NavBar = (props) => {
                 <h3>{user?.email}</h3>
               </div>
 
-              <div className={style.containerIconSettings}>
-                <box-icon
-                  type="solid"
-                  name="cog"
-                  color="var(--color-grey)"
-                ></box-icon>
+              <div
+                className={`${style.containerIconSettings} dropup-center dropup`}
+              >
+                <button
+                  className="btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <box-icon
+                    type="solid"
+                    name="cog"
+                    color="var(--color-grey)"
+                  ></box-icon>
+                </button>
+                <ul className={`dropdown-menu ${style.ulCerrarSesion}`}>
+                  <li>
+                    <a
+                      className={`dropdown-item ${style.cerrarSesion}`}
+                      href="#"
+                    >
+                      Cerrar Sesión
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

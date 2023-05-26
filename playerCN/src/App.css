@@ -26,6 +26,11 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid var(--color-blue);
 }
 
-.title-alert{
+.title-alert {
   font-size: 1.4rem !important;
+}
+
+.btn {
+  border: none;
+  padding: 0;
 }

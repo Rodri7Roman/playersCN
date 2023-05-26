@@ -111,12 +111,31 @@
 }
 
 .containerIconSettings {
-  padding: 4px;
-  border-radius: 50%;
+  padding: 4px 2px;
+  border-radius: 30%;
 }
 
 .containerIconSettings:hover {
   background-color: #4051694f;
+}
+.ulCerrarSesion {
+  background-color: var(--color-blue-light);
+}
+
+.ulCerrarSesion:hover {
+  background-color: var(--color-blue);
+}
+
+.cerrarSesion {
+  padding: 8px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--color-white);
+}
+
+.ulCerrarSesion .cerrarSesion:hover {
+  background-color: var(--color-blue);
+  color: var(--color-grey);
 }
 
 @media screen and (max-width: 1410px) {
