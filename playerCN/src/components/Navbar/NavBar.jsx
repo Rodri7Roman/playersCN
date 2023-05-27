@@ -8,11 +8,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUser, logout } from "../../redux/actions/users/user";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) navigate("/ingresar");
+    dispatch(getUser(token));
+  }, []);
 
   const submitCerrarSesion = (e) => {
     e.preventDefault();
@@ -108,14 +112,6 @@ const NavBar = () => {
                       href="#"
                     >
                       Cerrar Sesión
-                    </a>
-                  </button>
-                  <button>
-                    <a
-                      className={`dropdown-item ${style.cerrarSesion}`}
-                      href="#"
-                    >
-                      Editar perfil
                     </a>
                   </button>
                 </ul>

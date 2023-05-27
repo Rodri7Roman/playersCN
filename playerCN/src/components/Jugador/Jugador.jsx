@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Jugador.module.css";
 import NavBar from "../Navbar/NavBar";
 import { NavLink, useLocation } from "react-router-dom";
-import Profile from "../Equipo/Profile/Profile";
+import Profile from "./Profile/Profile";
 import { useSelector } from "react-redux";
 
 const Jugador = (props) => {
