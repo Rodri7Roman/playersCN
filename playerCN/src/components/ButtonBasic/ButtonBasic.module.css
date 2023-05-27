@@ -1,0 +1,17 @@
+.containerButton button {
+  width: 124px;
+  height: 34px;
+  border: 1px solid #225096;
+  border-radius: 28px;
+  background-color: transparent;
+  color: #225096;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-family: var(--font-poppins);
+}
+
+.containerButton button:hover {
+  background-color: #63a3eb;
+  border: 2px solid #225096;
+}

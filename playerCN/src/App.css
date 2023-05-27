@@ -34,3 +34,23 @@ body::-webkit-scrollbar-thumb {
   border: none;
   padding: 0;
 }
+
+.modal {
+  font-family: var(--font-roboto) !important;
+}
+
+.modal-title {
+  color: var(--color-white) !important;
+  font-family: var(--font-roboto) !important;
+}
+
+.modal-content {
+  background-color: var(--color-blue) !important;
+}
+
+.modal-header {
+  border: none !important;
+}
+.modal-footer {
+  border: none !important;
+}

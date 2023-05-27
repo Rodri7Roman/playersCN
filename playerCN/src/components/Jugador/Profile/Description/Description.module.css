@@ -1,6 +1,9 @@
 .containerName {
   position: absolute;
   top: 340px;
+  width: 760px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .containerName h1 {
@@ -45,26 +48,4 @@
   font-weight: lighter;
   width: 630px;
   line-height: 2rem;
-}
-
-.containerFollow {
-  padding-top: 12px;
-}
-
-.containerFollow button {
-  width: 124px;
-  height: 34px;
-  border: 1px solid #225096;
-  border-radius: 28px;
-  background-color: transparent;
-  color: #225096;
-  font-weight: bold;
-  font-size: 1.6rem;
-  cursor: pointer;
-  font-family: var(--font-poppins);
-}
-
-.containerFollow button:hover {
-  background-color: #63a3eb;
-  border: 2px solid #225096;
 }

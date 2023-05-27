@@ -1,0 +1,43 @@
+.containerInputLabel {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.containerInputLabel label {
+  font-size: 1.6rem;
+  padding-bottom: 4px;
+  font-weight: bold;
+  color: var(--color-grey);
+}
+
+.containerInputLabel input {
+  font-size: 1.4rem;
+  padding: 4px;
+  padding-left: 6px;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid var(--color-blue-light);
+  border-radius: 20px;
+  color: var(--color-white);
+}
+
+.buttonClose {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 2px solid #225096;
+  background-color: transparent;
+  color: #225096;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-family: var(--font-poppins);
+  border-radius: 24px;
+}
+
+.buttonClose:hover {
+  background-color: #63a3eb;
+  border: 2px solid #225096;
+}
