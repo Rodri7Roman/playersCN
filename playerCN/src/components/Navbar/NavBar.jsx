@@ -8,15 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUser, logout } from "../../redux/actions/users/user";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) navigate("/ingresar");
-    dispatch(getUser(token));
-  }, []);
+
 
   const submitCerrarSesion = (e) => {
     e.preventDefault();

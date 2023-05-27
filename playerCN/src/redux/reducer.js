@@ -5,10 +5,12 @@ import {
   REGISTER,
   REFRESH,
   LOGOUT,
+  ERROR,
 } from "./actions/users/types";
 
 const initialState = {
   user: {},
+  error: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -29,6 +31,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    }
+    case ERROR: {
+      return {
+        ...state,
+        error: action.payload,
       };
     }
     default:

@@ -5,6 +5,7 @@ import {
   REFRESH,
   REGISTER,
   LOGOUT,
+  ERROR,
 } from "./types";
 import axios from "axios";
 import ToastError from "../../../components/Alerts/ToastError";
@@ -66,14 +67,17 @@ export const getUser = (token) => {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return dispatch({
+        type: ERROR,
+        payload: error.response.data,
+      });
     }
   };
 };
 
 export const logout = () => {
   return async function (dispatch) {
-    localStorage.removeItem("token")
+    localStorage.removeItem("token");
     return dispatch({
       type: LOGOUT,
       payload: {},
