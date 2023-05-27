@@ -5,8 +5,14 @@ import NavBar from "../Navbar/NavBar";
 import Prompt from "./Prompt/Prompt";
 import Posts from "../Posts/Posts";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) navigate("/ingresar");
+  }, []);
   return (
     <div className={style.containerPpal}>
       <NavBar />
