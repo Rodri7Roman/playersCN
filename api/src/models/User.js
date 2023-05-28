@@ -18,8 +18,10 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         validate: {
-          len: [2, 20],
+          len: [0, 20],
         },
+        defaultValue: "",
+        
       },
       username: {
         type: DataTypes.STRING,

@@ -81,20 +81,47 @@ export const updateUsername = (token, username) => {
     try {
       const json = await axios.patch(
         "/users/updateUsername",
-        { username: username },
+        {
+          username: username,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log(json);
       return dispatch({
         type: UPDATE_USERNAME,
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return dispatch({
+        type: ERROR,
+        payload: error.response.data,
+      });
+    }
+  };
+};
+
+export const updateName = (token, name) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios.patch(
+        "/users/updateName",
+        {
+          name: name,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return dispatch({
+        type: UPDATE_NAME,
+        payload: json.data,
+      });
+    } catch (error) {
       return dispatch({
         type: ERROR,
         payload: error.response.data,

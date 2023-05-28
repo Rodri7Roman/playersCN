@@ -84,10 +84,10 @@ const NavBar = (props) => {
             <div className={style.containerNameUserNavBar}>
               <div className={style.containerUsername}>
                 <h2>
-                  {user.username?.charAt(0).toUpperCase() +
-                    user.username?.slice(1) || ""}
+                  {user.name?.charAt(0).toUpperCase() + user.name?.slice(1) ||
+                    ""}
                 </h2>
-                <h3>{user?.email}</h3>
+                <h3>@{user?.username}</h3>
               </div>
 
               <div

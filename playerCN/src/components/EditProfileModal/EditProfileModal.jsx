@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import style from "./EditProfileModal.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { validator } from "./validator";
-import { updateUsername } from "../../redux/actions/users/user";
+import { updateUsername, updateName } from "../../redux/actions/users/user";
+
 const EditProfileModal = () => {
   const user = useSelector((state) => state.user);
 
@@ -19,16 +20,23 @@ const EditProfileModal = () => {
   const [inputErrors, setInputErrors] = useState({});
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     if (Object.keys(inputErrors).length === 0 && isSubmit) {
-        if(inputs.username !== user.username) dispatch(updateUsername(token, inputs.username))
+      if (inputs.username !== user.username && inputs.username !== "") {
+        dispatch(updateUsername(token, inputs.username));
+        window.location.reload();
+      }
+      if (inputs.name !== user.name && inputs.name !== "") {
+        dispatch(updateName(token, inputs.name));
+        window.location.reload();
+      }
     }
   }, [inputErrors]);
 
   const onSubmitSave = (e) => {
-    e.preventDefault();
-    setInputErrors(validator(inputs));
-    if (user.username !== inputs.username) setIsSubmit(true);
+    console.log(inputs);
+    setInputErrors(validator(inputs, user));
+    setIsSubmit(true);
   };
 
   const handleChange = (e) => {
@@ -112,11 +120,7 @@ const EditProfileModal = () => {
             >
               Cerrar
             </button>
-            <button
-              type="button"
-              className={style.buttonClose}
-              onSubmit={onSubmitSave}
-            >
+            <button className={style.buttonClose} onClick={onSubmitSave}>
               Guardar
             </button>
           </div>

@@ -9,6 +9,7 @@ const {
   updateEmail,
   updatePassword,
   eliminarUsuario,
+  updateName,
 } = require("../../controllers/usersController");
 const usersRouter = Router();
 
@@ -80,6 +81,19 @@ usersRouter.patch("/updateUsername", async (req, res) => {
     if (!authorization) return res.status(401).send("No estas autenticado");
     const { payload } = await verifyToken(authorization);
     const user = await updateUsername(payload.id, username);
+    return res.status(200).send(user);
+  } catch (error) {
+    res.status(401).json({ error: error.message });
+  }
+});
+
+usersRouter.patch("/updateName", async (req, res) => {
+  try {
+    const { name } = req.body;
+    const { authorization } = req.headers;
+    if (!authorization) return res.status(401).send("No estas autenticado");
+    const { payload } = await verifyToken(authorization);
+    const user = await updateName(payload.id, name);
     return res.status(200).send(user);
   } catch (error) {
     res.status(401).json({ error: error.message });

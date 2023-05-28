@@ -77,7 +77,18 @@ const updateUsername = async (id, username) => {
   });
   if (!user) throw new Error("Usuario no encontrado");
   if (usernameExisting) throw new Error("Nombre de usuario en uso.");
+  if (username.length < 2)
+    throw new Error("Nombre de usuario demasiado corto.");
   user.username = username;
+  await user.save();
+  return "Usuario Actualizado";
+};
+
+const updateName = async (id, name) => {
+  const user = await User.findByPk(id);
+  if (!user) throw new Error("Usuario no encontrado");
+  if (name.length < 2) throw new Error("Nombre de usuario demasiado corto.");
+  user.name = name;
   await user.save();
   return "Usuario Actualizado";
 };
@@ -137,4 +148,5 @@ module.exports = {
   updateEmail,
   updatePassword,
   eliminarUsuario,
+  updateName,
 };
