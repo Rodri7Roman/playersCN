@@ -91,7 +91,6 @@ export const updateUsername = (token, username) => {
           },
         }
       );
-      window.location.reload();
       return dispatch({
         type: UPDATE_USERNAME,
         payload: json.data,
@@ -152,7 +151,34 @@ export const updateEmail = (token, email, password) => {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data.error,
+      });
+    }
+  };
+};
+
+export const updatePassword = (token, oldPassword, newPassword) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios.patch(
+        "/users/updatePassword",
+        {
+          oldPassword: oldPassword,
+          newPassword: newPassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return dispatch({
+        type: UPDATE_EMAIL,
+        payload: json.data,
+      });
+    } catch (error) {
       return ToastError.fire({
         icon: "error",
         title: error.response.data.error,

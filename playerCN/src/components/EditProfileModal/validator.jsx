@@ -20,6 +20,12 @@ export const validator = (input, user) => {
   if (input.actualPassword.length < 1 && input.email.length > 0) {
     err.actualPassword = "Ingrese su contraseña actual.";
   }
+  if (
+    (input.newPassword.length < 6 || input.newPassword.length > 12) &&
+    input.newPassword !== ""
+  ) {
+    err.newPassword = "Entre 6 y 12 digitos.";
+  }
 
   return err;
 };

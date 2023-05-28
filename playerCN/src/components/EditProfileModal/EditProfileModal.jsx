@@ -7,6 +7,7 @@ import {
   updateUsername,
   updateName,
   updateEmail,
+  updatePassword,
 } from "../../redux/actions/users/user";
 
 const EditProfileModal = () => {
@@ -39,6 +40,13 @@ const EditProfileModal = () => {
         `${style.showConfirmOff}`
       );
     }
+    if (inputs.newPassword !== "") {
+      let div = document.querySelectorAll("#confirmPassword");
+      div[0].classList.replace(
+        `${style.showConfirmOff}`,
+        `${style.showConfirmOn}`
+      );
+    }
   }, [inputs]);
 
   useEffect(() => {
@@ -53,11 +61,14 @@ const EditProfileModal = () => {
       if (inputs.email !== user.email && inputs.email !== "") {
         dispatch(updateEmail(token, inputs.email, inputs.actualPassword));
       }
+      if (inputs.newPassword !== "") {
+        dispatch(updatePassword(token, inputs.actualPassword, inputs.newPassword));
+      }
+
     }
   }, [inputErrors]);
 
   const onSubmitSave = (e) => {
-    console.log(inputs);
     setInputErrors(validator(inputs, user));
     setIsSubmit(true);
   };
