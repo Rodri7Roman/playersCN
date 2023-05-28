@@ -103,7 +103,7 @@ const EditProfileModal = () => {
           </div>
           <div className="modal-body">
             <div className={style.containerInputLabel}>
-              <label htmlFor="">Nombre</label>
+              <label htmlFor="name">Nombre</label>
               <input
                 type="text"
                 onChange={handleChange}
@@ -114,7 +114,7 @@ const EditProfileModal = () => {
               <span className={style.span}>{inputErrors.name}</span>
             </div>
             <div className={style.containerInputLabel}>
-              <label htmlFor="">Nombre de usuario</label>
+              <label htmlFor="username">Nombre de usuario</label>
               <input
                 type="text"
                 onChange={handleChange}
@@ -125,7 +125,7 @@ const EditProfileModal = () => {
               <span className={style.span}>{inputErrors.username}</span>
             </div>
             <div className={style.containerInputLabel}>
-              <label htmlFor="">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="text"
                 onChange={handleChange}
@@ -137,7 +137,7 @@ const EditProfileModal = () => {
             </div>
 
             <div className={style.containerInputLabel}>
-              <label htmlFor="">Contraseña</label>
+              <label htmlFor="newPassword">Contraseña</label>
               <input
                 type="password"
                 onChange={handleChange}
@@ -150,7 +150,7 @@ const EditProfileModal = () => {
             <div id="confirmPassword" className={style.showConfirmOff}>
               <div className={style.containerInputLabel}>
                 <h1>Ingrese su contraseña para guardar cambios.</h1>
-                <label htmlFor="">Contraseña</label>
+                <label htmlFor="actualPassword">Contraseña</label>
                 <input
                   type="password"
                   onChange={handleChange}
