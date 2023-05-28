@@ -7,6 +7,7 @@ import {
   REGISTER,
   LOGOUT,
   ERROR,
+  UPDATE_EMAIL,
 } from "./types";
 import axios from "axios";
 import ToastError from "../../../components/Alerts/ToastError";
@@ -90,6 +91,7 @@ export const updateUsername = (token, username) => {
           },
         }
       );
+      window.location.reload();
       return dispatch({
         type: UPDATE_USERNAME,
         payload: json.data,
@@ -122,9 +124,38 @@ export const updateName = (token, name) => {
         payload: json.data,
       });
     } catch (error) {
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data.error,
+      });
+    }
+  };
+};
+
+export const updateEmail = (token, email, password) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios.patch(
+        "/users/updateEmail",
+        {
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return dispatch({
-        type: ERROR,
-        payload: error.response.data,
+        type: UPDATE_EMAIL,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data.error,
       });
     }
   };

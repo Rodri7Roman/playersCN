@@ -13,5 +13,13 @@ export const validator = (input, user) => {
     err.username = "Demasiado corto.";
   if (input.username.length > 20) err.username = "Demasiado largo.";
 
+  if (!/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(input.email) && input.email !== "") {
+    err.email = "Email inválido.";
+  }
+
+  if (input.actualPassword.length < 1 && input.email.length > 0) {
+    err.actualPassword = "Ingrese su contraseña actual.";
+  }
+
   return err;
 };

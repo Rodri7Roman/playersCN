@@ -49,3 +49,17 @@
   padding: 3px;
   color: rgb(245, 75, 75);
 }
+
+.showConfirmOff {
+  display: none;
+}
+
+.showConfirmOn {
+  display: block;
+}
+
+.showConfirmOn h1 {
+  color: var(--color-grey);
+  padding: 0;
+  font-size: 1.4rem;
+}

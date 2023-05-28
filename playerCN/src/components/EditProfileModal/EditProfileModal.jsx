@@ -3,7 +3,11 @@ import { useEffect } from "react";
 import style from "./EditProfileModal.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { validator } from "./validator";
-import { updateUsername, updateName } from "../../redux/actions/users/user";
+import {
+  updateUsername,
+  updateName,
+  updateEmail,
+} from "../../redux/actions/users/user";
 
 const EditProfileModal = () => {
   const user = useSelector((state) => state.user);
@@ -15,20 +19,39 @@ const EditProfileModal = () => {
     name: "",
     username: "",
     email: "",
-    password: "",
+    actualPassword: "",
+    newPassword: "",
   });
   const [inputErrors, setInputErrors] = useState({});
+
+  useEffect(() => {
+    if (inputs.email !== "") {
+      let div = document.querySelectorAll("#confirmPassword");
+      div[0].classList.replace(
+        `${style.showConfirmOff}`,
+        `${style.showConfirmOn}`
+      );
+    }
+    if (inputs.email === "" || inputs.email === user.email) {
+      let div = document.querySelectorAll("#confirmPassword");
+      div[0].classList.replace(
+        `${style.showConfirmOn}`,
+        `${style.showConfirmOff}`
+      );
+    }
+  }, [inputs]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (Object.keys(inputErrors).length === 0 && isSubmit) {
       if (inputs.username !== user.username && inputs.username !== "") {
         dispatch(updateUsername(token, inputs.username));
-        window.location.reload();
       }
       if (inputs.name !== user.name && inputs.name !== "") {
         dispatch(updateName(token, inputs.name));
-        window.location.reload();
+      }
+      if (inputs.email !== user.email && inputs.email !== "") {
+        dispatch(updateEmail(token, inputs.email, inputs.actualPassword));
       }
     }
   }, [inputErrors]);
@@ -101,15 +124,30 @@ const EditProfileModal = () => {
               />
               <span className={style.span}>{inputErrors.email}</span>
             </div>
+
             <div className={style.containerInputLabel}>
               <label htmlFor="">Contraseña</label>
               <input
                 type="password"
                 onChange={handleChange}
-                name="password"
+                name="newPassword"
                 value={inputs.password}
               />
-              <span className={style.span}>{inputErrors.password}</span>
+              <span className={style.span}>{inputErrors.newPassword}</span>
+            </div>
+
+            <div id="confirmPassword" className={style.showConfirmOff}>
+              <div className={style.containerInputLabel}>
+                <h1>Ingrese su contraseña para guardar cambios.</h1>
+                <label htmlFor="">Contraseña</label>
+                <input
+                  type="password"
+                  onChange={handleChange}
+                  name="actualPassword"
+                  value={inputs.password}
+                />
+                <span className={style.span}>{inputErrors.actualPassword}</span>
+              </div>
             </div>
           </div>
           <div className="modal-footer">
