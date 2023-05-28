@@ -41,3 +41,11 @@
   background-color: #63a3eb;
   border: 2px solid #225096;
 }
+
+.span {
+  height: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  padding: 3px;
+  color: rgb(245, 75, 75);
+}

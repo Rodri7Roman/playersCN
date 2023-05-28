@@ -1,6 +1,7 @@
 import {
   GET_USER,
-  UPDATE_USER,
+  UPDATE_NAME,
+  UPDATE_USERNAME,
   LOGIN,
   REFRESH,
   REGISTER,
@@ -67,6 +68,33 @@ export const getUser = (token) => {
         payload: json.data,
       });
     } catch (error) {
+      return dispatch({
+        type: ERROR,
+        payload: error.response.data,
+      });
+    }
+  };
+};
+
+export const updateUsername = (token, username) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios.patch(
+        "/users/updateUsername",
+        { username: username },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(json);
+      return dispatch({
+        type: UPDATE_USERNAME,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
       return dispatch({
         type: ERROR,
         payload: error.response.data,

@@ -7,7 +7,7 @@ const ButtonBasic = () => {
       <div
         className={`${style.containerButton}`}
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#editModal"
       >
         <button>Editar Perfil</button>
       </div>

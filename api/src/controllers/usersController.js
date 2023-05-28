@@ -70,7 +70,13 @@ const verifyToken = async (authorization) => {
 
 const updateUsername = async (id, username) => {
   const user = await User.findByPk(id);
+  const usernameExisting = await User.findOne({
+    where: {
+      username: username,
+    },
+  });
   if (!user) throw new Error("Usuario no encontrado");
+  if (usernameExisting) throw new Error("Nombre de usuario en uso.");
   user.username = username;
   await user.save();
   return "Usuario Actualizado";
