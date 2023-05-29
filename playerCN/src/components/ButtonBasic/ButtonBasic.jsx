@@ -9,7 +9,7 @@ const ButtonBasic = () => {
         data-bs-toggle="modal"
         data-bs-target="#editModal"
       >
-        <button>Editar Perfil</button>
+        <button>Ajustes</button>
       </div>
       <EditProfileModal />
     </>

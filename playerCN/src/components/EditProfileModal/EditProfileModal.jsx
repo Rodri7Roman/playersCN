@@ -92,7 +92,7 @@ const EditProfileModal = () => {
         <div className={`${style.contentModal} modal-content`}>
           <div className="modal-header">
             <h1 className="modal-title" id="editModalLabel">
-              Editar Perfil
+              Ajustes
             </h1>
             <button
               type="button"
