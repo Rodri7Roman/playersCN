@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Post.module.css";
 import user from "../../assets/icons/user.png";
 import logo from "../../assets/imgs/logoEquipo2.png";
 import fire from "../../assets/imgs/banner2.png";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { getUserById } from "../../redux/actions/users/user";
+
 const Post = (props) => {
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts);
+  const userPost = useSelector((state) => state.userPost);
+  const [data, setData] = useState({});
+  useEffect(() => {
+    try {
+      posts.map(async (post) => {
+        const json = await axios.get(`/users/${props.userId}`);
+        setData(json.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <div className={style.containerPost}>
       <div className={style.containerUserContent}>
@@ -12,8 +31,7 @@ const Post = (props) => {
         </div>
         <div className={style.content}>
           <span className={style.nameUser}>
-            {props.userId}{" "}
-            <span className={style.arroba}>@ImperialGaming_</span>
+            {data.name} <span className={style.arroba}>@{data.username}</span>
           </span>
           <p className={style.contentPost}>{props.title}</p>
           <p className={style.contentPost}>{props.content}</p>

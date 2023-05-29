@@ -16,13 +16,13 @@ const getAllUsers = async () => {
 
 const getUserById = async (id) => {
   try {
-    const allUsers = await User.findOne({
+    const user = await User.findOne({
       where: {
         id,
       },
       attributes: { exclude: "password" },
     });
-    return allUsers;
+    return user;
   } catch (error) {
     return error.message;
   }

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Post from "../Post/Post";
 
 const Posts = (props) => {
-  useEffect(() => {}, []);
   return (
     <div>
       {props.posts?.map((post) => {
