@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
 import style from "./Post.module.css";
-import user from "../../assets/icons/user.png";
 import logo from "../../assets/imgs/logoEquipo2.png";
-import fire from "../../assets/imgs/banner2.png";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 const Post = (props) => {
-  const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts);
   const [data, setData] = useState({});
   useEffect(() => {
     (async () => {
       try {
         const json = await axios.get(`/users/${props.userId}`);
-        console.log(json);
         setData(json.data);
       } catch (error) {
         console.log(error);
