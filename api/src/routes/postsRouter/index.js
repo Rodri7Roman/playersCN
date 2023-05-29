@@ -1,5 +1,9 @@
 const { Router } = require("express");
-const { getAllPosts, postPost } = require("../../controllers/postsController");
+const {
+  getAllPosts,
+  postPost,
+  verifyToken,
+} = require("../../controllers/postsController");
 
 const postsRouter = Router();
 
@@ -14,13 +18,16 @@ postsRouter.get("/", async (req, res) => {
 
 postsRouter.post("/", async (req, res) => {
   try {
+    const { authorization } = req.headers;
+    if (!authorization) throw new Error("No estas autorizado.");
     const { title, content } = req.body;
-    if (!title || !content)
-      throw new Error("Rellenar los campos titulo y content.");
-    const post = await postPost({ title, content });
-    res.status(200).send(post);
+    if (!title || !content) throw new Error("Rellenar los campos.");
+    const { payload } = await verifyToken(authorization);
+    const userId = payload.id;
+    const newPost = await postPost({ title, content, userId });
+    return res.status(200).send(newPost);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    return res.status(400).json({ error: error.message });
   }
 });
 
