@@ -7,6 +7,7 @@ import {
   REGISTER,
   LOGOUT,
   ERROR,
+  GET_USER_BY_ID,
   UPDATE_EMAIL,
 } from "./types";
 import axios from "axios";
@@ -66,6 +67,23 @@ export const getUser = (token) => {
       });
       return dispatch({
         type: GET_USER,
+        payload: json.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: ERROR,
+        payload: error.response.data,
+      });
+    }
+  };
+};
+
+export const getUserById = (id) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`/users/${id}`);
+      return dispatch({
+        type: GET_USER_BY_ID,
         payload: json.data,
       });
     } catch (error) {

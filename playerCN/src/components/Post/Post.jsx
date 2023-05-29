@@ -12,15 +12,11 @@ const Post = (props) => {
         </div>
         <div className={style.content}>
           <span className={style.nameUser}>
-            Imperial <span className={style.arroba}>@ImperialGaming_</span>
+            {props.userId}{" "}
+            <span className={style.arroba}>@ImperialGaming_</span>
           </span>
-          <p className={style.contentPost}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Praesentium libero earum ipsum alias illo. Dolores mollitia nulla
-            magni nobis reprehenderit suscipit, impedit eligendi quidem aperiam
-            earum blanditiis cum quam commodi! Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Praes
-          </p>
+          <p className={style.contentPost}>{props.title}</p>
+          <p className={style.contentPost}>{props.content}</p>
           {/* <div className={style.flexImgs}>
             <img src={fire} alt="" className={style.imgContent} />
           </div> */}

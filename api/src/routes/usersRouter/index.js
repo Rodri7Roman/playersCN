@@ -10,12 +10,23 @@ const {
   updatePassword,
   eliminarUsuario,
   updateName,
+  getUserById,
 } = require("../../controllers/usersController");
 const usersRouter = Router();
 
 usersRouter.get("/", async (req, res) => {
   try {
     const users = await getAllUsers();
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+usersRouter.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const users = await getUserById(id);
     res.status(200).send(users);
   } catch (error) {
     res.status(400).json({ error: error.message });

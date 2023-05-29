@@ -3,9 +3,7 @@ const { jwtVerify } = require("jose");
 
 const getAllPosts = async () => {
   try {
-    const allPosts = await Post.findAll({
-      attributes: { exclude: "password" },
-    });
+    const allPosts = await Post.findAll();
     return allPosts;
   } catch (error) {
     return error.message;

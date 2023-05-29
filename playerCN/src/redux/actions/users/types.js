@@ -7,3 +7,4 @@ export const REGISTER = "REGISTER";
 export const REFRESH = "REFRESH";
 export const LOGOUT = "LOGOUT";
 export const ERROR = "ERROR";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
