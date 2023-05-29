@@ -5,22 +5,20 @@ import logo from "../../assets/imgs/logoEquipo2.png";
 import fire from "../../assets/imgs/banner2.png";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { getUserById } from "../../redux/actions/users/user";
-
 const Post = (props) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
-  const userPost = useSelector((state) => state.userPost);
   const [data, setData] = useState({});
   useEffect(() => {
-    try {
-      posts.map(async (post) => {
+    (async () => {
+      try {
         const json = await axios.get(`/users/${props.userId}`);
+        console.log(json);
         setData(json.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }, []);
 
   return (

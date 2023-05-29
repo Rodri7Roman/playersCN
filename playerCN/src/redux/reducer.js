@@ -7,7 +7,6 @@ import {
   REFRESH,
   LOGOUT,
   ERROR,
-  GET_USER_BY_ID,
 } from "./actions/users/types";
 import { GET_POSTS } from "./actions/posts/types";
 
@@ -15,7 +14,6 @@ const initialState = {
   user: {},
   error: false,
   posts: [],
-  userPost: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -49,12 +47,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload,
-      };
-    }
-    case GET_USER_BY_ID: {
-      return {
-        ...state,
-        userPost: action.payload,
       };
     }
     default:
