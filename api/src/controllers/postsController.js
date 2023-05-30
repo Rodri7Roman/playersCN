@@ -25,6 +25,22 @@ const getMyPosts = async ({ userId }) => {
   return allPosts;
 };
 
+const getPostsByUsername = async ({ username }) => {
+  const user = await User.findOne({
+    where: {
+      username,
+    },
+  });
+  if (!user) throw new Error("Usuario inexistente.");
+  const allPosts = await Post.findAll({
+    where: {
+      UserId: user.id,
+    },
+    order: [["createdAt", "DESC"]],
+  });
+  return allPosts;
+};
+
 const verifyToken = async (authorization) => {
   const encoder = new TextEncoder();
   const jwtData = await jwtVerify(
@@ -47,4 +63,5 @@ module.exports = {
   postPost,
   verifyToken,
   getMyPosts,
+  getPostsByUsername,
 };

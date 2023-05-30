@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/equipos" element={<Equipos />} />
             <Route exact path="/equipos/1" element={<Equipo />} />
             <Route exact path="/jugadores" element={<Jugadores />} />
-            <Route exact path="/jugadores/1" element={<Jugador />} />
+            <Route exact path="/jugadores/:username" element={<Jugador />} />
             <Route exact path="/registrarse" element={<Register />} />
             <Route exact path="/ingresar" element={<Ingresar />} />
             <Route exact path="/perfil" element={<MyProfile />} />

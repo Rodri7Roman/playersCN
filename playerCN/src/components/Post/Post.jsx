@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import style from "./Post.module.css";
 import logo from "../../assets/imgs/logoEquipo2.png";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
+
 const Post = (props) => {
   const [data, setData] = useState({});
   useEffect(() => {
     (async () => {
       try {
         const json = await axios.get(`/users/${props.userId}`);
+        console.log(json.data);
         setData(json.data);
       } catch (error) {
         console.log(error);
@@ -32,9 +35,12 @@ const Post = (props) => {
           <img src={logo} alt="" className={style.imgUser} />
         </div>
         <div className={style.content}>
-          <span className={style.nameUser}>
+          <NavLink
+            to={`/jugadores/${data.username}`}
+            className={style.linkNameUser}
+          >
             {data.name} <span className={style.arroba}>@{data.username}</span>
-          </span>
+          </NavLink>
           <p className={style.contentPost}>{formatContent(props.content)}</p>
           {/* <div className={style.flexImgs}>
             <img src={fire} alt="" className={style.imgContent} />

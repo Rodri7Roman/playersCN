@@ -41,6 +41,23 @@ export const getPostsByUser = (token) => {
   };
 };
 
+export const getPostsByUsername = (username) => {
+  return async (dispatch) => {
+    try {
+      const json = await axios.get(`/posts/${username}`);
+      return dispatch({
+        type: GET_POSTS_USER,
+        payload: json.data,
+      });
+    } catch (error) {
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data.error,
+      });
+    }
+  };
+};
+
 export const postPost = (content, token) => {
   return async (dispatch) => {
     try {

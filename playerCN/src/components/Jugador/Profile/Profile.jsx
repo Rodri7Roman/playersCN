@@ -7,9 +7,9 @@ const Profile = (props) => {
   return (
     <div className={style.containerProfile}>
       <Header user={props.user} />
-      <Description  user={props.user}/>
+      <Description user={props.user} />
       <div className={style.containerPost}>
-        <Posts posts={props.posts} />
+        <Posts posts={props.posts} user={props.user} />
       </div>
     </div>
   );

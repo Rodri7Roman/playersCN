@@ -18,13 +18,19 @@
   margin-bottom: 16px;
 }
 
-.nameUser {
+.linkNameUser {
   font-size: 1.6rem;
   font-weight: bold;
   color: var(--color-white);
   font-family: Arial, Helvetica, sans-serif;
   padding-left: 8px;
+  text-decoration: none;
 }
+
+.linkNameUser:hover{
+  color: var(--color-white);
+}
+
 .arroba {
   font-size: 1.3rem;
   font-weight: bold;
