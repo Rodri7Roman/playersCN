@@ -10,13 +10,14 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: DataTypes.UUIDV4,
       },
-      title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       content: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

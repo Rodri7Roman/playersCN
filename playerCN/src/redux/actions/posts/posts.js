@@ -12,7 +12,32 @@ export const getPosts = () => {
         payload: json.data,
       });
     } catch (error) {
-      console.log(error);
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data,
+      });
+    }
+  };
+};
+
+export const postPost = (content, token) => {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(
+        "/posts",
+        { content: content },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      window.location.reload();
+    } catch (error) {
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data.error,
+      });
     }
   };
 };

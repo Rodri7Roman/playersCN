@@ -4,8 +4,12 @@ import user from "../../../assets/icons/user.png";
 import perfil from "../../../assets/imgs/logoEquipo.jpg";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { postPost } from "../../../redux/actions/posts/posts";
 
 const Prompt = (props) => {
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
   const [input, setInput] = useState({
     post: "",
   });
@@ -15,6 +19,11 @@ const Prompt = (props) => {
       ...input,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const submitPost = (e) => {
+    e.preventDefault();
+    dispatch(postPost(input.post, token));
   };
 
   return (
@@ -29,6 +38,7 @@ const Prompt = (props) => {
           id="post"
           rows={4}
           placeholder="Qué estás pensando?"
+          value={input.post}
         ></textarea>
         <div className={style.containerEnviarIcon}>
           <div className={style.containerIcon}>
@@ -36,7 +46,7 @@ const Prompt = (props) => {
           </div>
 
           <div className={style.containerEnviar}>
-            <button type="submit" className={style.active}>
+            <button type="submit" onClick={submitPost} className={style.active}>
               Enviar
             </button>
           </div>

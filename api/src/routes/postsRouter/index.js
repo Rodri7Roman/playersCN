@@ -20,11 +20,11 @@ postsRouter.post("/", async (req, res) => {
   try {
     const { authorization } = req.headers;
     if (!authorization) throw new Error("No estas autorizado.");
-    const { title, content } = req.body;
-    if (!title || !content) throw new Error("Rellenar los campos.");
+    const { content } = req.body;
+    if (!content) throw new Error("Campo vacío.");
     const { payload } = await verifyToken(authorization);
     const userId = payload.id;
-    const newPost = await postPost({ title, content, userId });
+    const newPost = await postPost({ content, userId });
     return res.status(200).send(newPost);
   } catch (error) {
     return res.status(400).json({ error: error.message });

@@ -3,7 +3,10 @@ const { jwtVerify } = require("jose");
 
 const getAllPosts = async () => {
   try {
-    const allPosts = await Post.findAll();
+    // const allPosts = await Post.findAll();
+    const allPosts = await Post.findAll({
+      order: [["createdAt", "DESC"]],
+    });
     return allPosts;
   } catch (error) {
     return error.message;
@@ -19,12 +22,12 @@ const verifyToken = async (authorization) => {
   return jwtData;
 };
 
-const postPost = async ({ title, content, userId }) => {
-  const newPost = await Post.create({ title, content });
+const postPost = async ({ content, userId }) => {
+  const newPost = await Post.create({ content });
   const user = await User.findByPk(userId);
-  if (!user) throw new Error("Usuario no encontrado.");
+  if (!user) throw new Error("Usuario inexistente.");
   await newPost.setUser(userId);
-  return newPost;
+  return "Publicado.";
 };
 
 module.exports = {

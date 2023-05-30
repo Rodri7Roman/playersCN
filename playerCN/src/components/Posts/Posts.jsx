@@ -7,11 +7,7 @@ const Posts = (props) => {
       {props.posts?.map((post) => {
         return (
           <div key={post.id}>
-            <Post
-              content={post.content}
-              title={post.title}
-              userId={post.UserId}
-            />
+            <Post content={post.content} userId={post.UserId} />
           </div>
         );
       })}

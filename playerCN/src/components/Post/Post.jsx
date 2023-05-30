@@ -25,7 +25,6 @@ const Post = (props) => {
           <span className={style.nameUser}>
             {data.name} <span className={style.arroba}>@{data.username}</span>
           </span>
-          <p className={style.contentPost}>{props.title}</p>
           <p className={style.contentPost}>{props.content}</p>
           {/* <div className={style.flexImgs}>
             <img src={fire} alt="" className={style.imgContent} />
