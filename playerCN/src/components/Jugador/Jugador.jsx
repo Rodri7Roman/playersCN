@@ -1,12 +1,9 @@
 import React from "react";
 import style from "./Jugador.module.css";
 import NavBar from "../Navbar/NavBar";
-import { NavLink, useLocation } from "react-router-dom";
 import Profile from "./Profile/Profile";
-import { useSelector } from "react-redux";
 
 const Jugador = (props) => {
-  const location = useLocation();
   return (
     <div className={style.containerPpal}>
       <NavBar />
@@ -17,7 +14,7 @@ const Jugador = (props) => {
           </a>
         </div>
         <div>
-          <Profile user={props.user} />
+          <Profile user={props.user} posts={props.posts} />
         </div>
       </div>
       <h1 className={style.tercerSeccion}>KJASD</h1>

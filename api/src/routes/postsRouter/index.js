@@ -3,7 +3,7 @@ const {
   getAllPosts,
   postPost,
   verifyToken,
-  getPostsByUsername,
+  getMyPosts,
 } = require("../../controllers/postsController");
 
 const postsRouter = Router();
@@ -32,11 +32,13 @@ postsRouter.post("/", async (req, res) => {
   }
 });
 
-postsRouter.get("/:username", async (req, res) => {
+postsRouter.get("/myPosts", async (req, res) => {
   try {
-    const { username } = req.params;
-    if (!username) throw new Error("Username no recibido.");
-    const posts = await getPostsByUsername(username);
+    const { authorization } = req.headers;
+    if (!authorization) throw new Error("No estas autorizado.");
+    const { payload } = await verifyToken(authorization);
+    const userId = payload.id;
+    const posts = await getMyPosts({ userId });
     res.status(200).send(posts);
   } catch (error) {
     res.status(400).json({ error: error.message });
