@@ -32,8 +32,12 @@ export const postPost = (content, token) => {
           },
         }
       );
+      // ToastSuccess.fire({
+      //   title: json.data,
+      // });
       window.location.reload();
     } catch (error) {
+      console.log(error);
       return ToastError.fire({
         icon: "error",
         title: error.response.data.error,

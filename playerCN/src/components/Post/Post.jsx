@@ -15,6 +15,16 @@ const Post = (props) => {
     })();
   }, []);
 
+  const formatContent = (content) => {
+    const lines = content.split("\n");
+    return lines.map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+
   return (
     <div className={style.containerPost}>
       <div className={style.containerUserContent}>
@@ -25,7 +35,7 @@ const Post = (props) => {
           <span className={style.nameUser}>
             {data.name} <span className={style.arroba}>@{data.username}</span>
           </span>
-          <p className={style.contentPost}>{props.content}</p>
+          <p className={style.contentPost}>{formatContent(props.content)}</p>
           {/* <div className={style.flexImgs}>
             <img src={fire} alt="" className={style.imgContent} />
           </div> */}
