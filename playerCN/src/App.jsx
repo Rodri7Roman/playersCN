@@ -10,7 +10,7 @@ import Jugadores from "./components/Jugadores/Jugadores";
 import Jugador from "./components/Jugador/Jugador";
 import Register from "./components/Register/Register";
 import Ingresar from "./components/Ingresar/Ingresar";
-import MyProfile from "./components/myProfile/myProfile";
+import MyProfile from "./components/MyProfile/MyProfile";
 import Error from "./components/Error/Error";
 
 function App() {

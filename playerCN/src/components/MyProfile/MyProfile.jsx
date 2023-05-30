@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Jugador from "../Jugador/Jugador";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const MyProfile = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   return (
     <div>
-      <Jugador />
+      <Jugador user={user} />
     </div>
   );
 };

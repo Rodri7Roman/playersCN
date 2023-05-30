@@ -3,6 +3,7 @@ const {
   getAllPosts,
   postPost,
   verifyToken,
+  getPostsByUsername,
 } = require("../../controllers/postsController");
 
 const postsRouter = Router();
@@ -28,6 +29,17 @@ postsRouter.post("/", async (req, res) => {
     return res.status(200).send(newPost);
   } catch (error) {
     return res.status(400).json({ error: error.message });
+  }
+});
+
+postsRouter.get("/:username", async (req, res) => {
+  try {
+    const { username } = req.params;
+    if (!username) throw new Error("Username no recibido.");
+    const posts = await getPostsByUsername(username);
+    res.status(200).send(posts);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 

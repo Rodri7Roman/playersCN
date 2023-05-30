@@ -2,16 +2,16 @@ import React from "react";
 import style from "./Description.module.css";
 import ButtonBasic from "../../../ButtonBasic/ButtonBasic";
 
-const Description = () => {
+const Description = (props) => {
   return (
     <div className={style.containerDescription}>
       <div>
         <div className={style.containerName}>
-          <h1>Imperial</h1>
+          <h1>{props.user.name}</h1>
           <ButtonBasic />
         </div>
         <div className={style.containerArroba}>
-          <h2>@Imperial_</h2>
+          <h2>@{props.user.username}</h2>
         </div>
         <div className={style.containerContent}>
           <div>

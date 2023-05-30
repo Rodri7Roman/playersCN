@@ -8,12 +8,13 @@ import {
   LOGOUT,
   ERROR,
 } from "./actions/users/types";
-import { GET_POSTS, POST_POST } from "./actions/posts/types";
+import { GET_POSTS, GET_POSTS_USER, POST_POST } from "./actions/posts/types";
 
 const initialState = {
   user: {},
   error: false,
   posts: [],
+  postsUser: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -47,6 +48,13 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload,
+      };
+    }
+
+    case GET_POSTS_USER: {
+      return {
+        ...state,
+        postsUser: action.payload,
       };
     }
     case POST_POST: {
