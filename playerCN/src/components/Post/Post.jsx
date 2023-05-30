@@ -10,7 +10,6 @@ const Post = (props) => {
     (async () => {
       try {
         const json = await axios.get(`/users/${props.userId}`);
-        console.log(json.data);
         setData(json.data);
       } catch (error) {
         console.log(error);
