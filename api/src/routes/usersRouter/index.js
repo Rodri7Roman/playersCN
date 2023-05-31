@@ -143,6 +143,7 @@ usersRouter.delete("/eliminar", async (req, res) => {
 usersRouter.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    if(!id) return res.status(401).send("Id no recibido.");
     const user = await getUserById(id);
     res.status(200).send(user);
   } catch (error) {

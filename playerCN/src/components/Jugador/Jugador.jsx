@@ -22,7 +22,7 @@ const Jugador = (props) => {
       <div className={style.containerJugador} id="inicio">
         <div className={style.containerInicio}>
           <a href="#inicio" className={style.linkInicio}>
-            {props.user.username}
+            {location.pathname === "/perfil" ? props.user.username : ""}
           </a>
         </div>
         <div>
