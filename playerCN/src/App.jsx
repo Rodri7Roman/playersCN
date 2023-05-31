@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
 import Home from "./components/Home/Home";
 import Equipos from "./components/Equipos/Equipos";
@@ -12,6 +12,9 @@ import Register from "./components/Register/Register";
 import Ingresar from "./components/Ingresar/Ingresar";
 import MyProfile from "./components/MyProfile/MyProfile";
 import Error from "./components/Error/Error";
+import { lazy } from "react";
+
+// const Home = lazy(()=> import("./components/Home/Home"))
 
 function App() {
   return (
@@ -19,6 +22,7 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Routes>
+            {/* <Suspense fallback="Loading..."> */}
             <Route exact path="/" element={<Home />} />
             <Route exact path="/equipos" element={<Equipos />} />
             <Route exact path="/equipos/1" element={<Equipo />} />
@@ -28,6 +32,7 @@ function App() {
             <Route exact path="/ingresar" element={<Ingresar />} />
             <Route exact path="/perfil" element={<MyProfile />} />
             <Route path="*" element={<Error />} />
+            {/* </Suspense> */}
           </Routes>
         </div>
       </BrowserRouter>

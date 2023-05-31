@@ -1,14 +1,16 @@
 import React from "react";
 import style from "./Description.module.css";
 import ButtonBasic from "../../../ButtonBasic/ButtonBasic";
+import { useLocation } from "react-router-dom";
 
 const Description = (props) => {
+  const location = useLocation();
   return (
     <div className={style.containerDescription}>
       <div>
         <div className={style.containerName}>
           <h1>{props.user.name}</h1>
-          <ButtonBasic />
+          {location.pathname === "/perfil" && <ButtonBasic />}
         </div>
         <div className={style.containerArroba}>
           <h2>@{props.user.username}</h2>
