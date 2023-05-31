@@ -15,17 +15,25 @@ const getAllUsers = async () => {
 };
 
 const getUserById = async (id) => {
-  try {
-    const user = await User.findOne({
-      where: {
-        id,
-      },
-      attributes: { exclude: "password" },
-    });
-    return user;
-  } catch (error) {
-    return error.message;
-  }
+  const user = await User.findOne({
+    where: {
+      id,
+    },
+    attributes: { exclude: "password" },
+  });
+  if (!user) throw new Error("Usuario no encontrado");
+  return user;
+};
+
+const getUserByUsername = async (username) => {
+  const user = await User.findOne({
+    where: {
+      username,
+    },
+    attributes: { exclude: "password" },
+  });
+  if (!user) throw new Error("Usuario no encontrado");
+  return user;
 };
 
 const registerUser = async ({ email, username, password, admin }) => {
@@ -164,4 +172,5 @@ module.exports = {
   eliminarUsuario,
   updateName,
   getUserById,
+  getUserByUsername,
 };

@@ -11,6 +11,7 @@ const {
   eliminarUsuario,
   updateName,
   getUserById,
+  getUserByUsername,
 } = require("../../controllers/usersController");
 const usersRouter = Router();
 
@@ -140,12 +141,18 @@ usersRouter.delete("/eliminar", async (req, res) => {
   }
 });
 
-usersRouter.get("/:id", async (req, res) => {
+usersRouter.get("/:idOrUsername", async (req, res) => {
   try {
-    const { id } = req.params;
-    if(!id) return res.status(401).send("Id no recibido.");
-    const user = await getUserById(id);
-    res.status(200).send(user);
+    const { idOrUsername } = req.params;
+    const { queryType } = req.query;
+    if (!idOrUsername) return res.status(401).send("Id no recibido.");
+    if (queryType === "id") {
+      const user = await getUserById(idOrUsername);
+      res.status(200).send(user);
+    } else if (queryType === "username") {
+      const user = await getUserByUsername(idOrUsername);
+      res.status(200).send(user);
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

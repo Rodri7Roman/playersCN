@@ -11,7 +11,7 @@ const Post = (props) => {
     if (location.pathname !== "/perfil") {
       (async () => {
         try {
-          const json = await axios.get(`/users/${props.userId}`);
+          const json = await axios.get(`/users/${props.userId}?queryType=id`);
           setData(json.data);
         } catch (error) {
           console.log(error);
