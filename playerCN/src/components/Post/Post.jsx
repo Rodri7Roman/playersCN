@@ -8,7 +8,10 @@ const Post = (props) => {
   const [data, setData] = useState({});
   const location = useLocation();
   useEffect(() => {
-    if (location.pathname !== "/perfil") {
+    if (
+      location.pathname !== "/perfil" &&
+      !location.pathname.includes("jugadores")
+    ) {
       (async () => {
         try {
           const json = await axios.get(`/users/${props.userId}?queryType=id`);
@@ -32,7 +35,8 @@ const Post = (props) => {
 
   return (
     <>
-      {location.pathname !== "/perfil" ? (
+      {location.pathname !== "/perfil" &&
+      !location.pathname.includes("jugadores") ? (
         <div className={style.containerPost}>
           <div className={style.containerUserContent}>
             <div>
