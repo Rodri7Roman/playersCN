@@ -8,6 +8,7 @@ const Posts = (props) => {
         return (
           <div key={post.id}>
             <Post
+              postId = {post.id}
               content={post.content}
               userId={post.UserId}
               user={props.user}

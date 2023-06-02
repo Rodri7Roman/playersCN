@@ -1,0 +1,42 @@
+.containerPpal {
+  width: 70vw;
+  margin: 0 auto;
+}
+.containerJugadores {
+  width: 40vw;
+  margin-left: 20vw;
+  border-right: 1px solid #41414148;
+  padding-bottom: 18px;
+  min-height: 110vh;
+}
+
+.containerSearch {
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  background-color: #1b1b1b33;
+}
+
+.containerSearch {
+  padding-top: 26px;
+  padding-left: 16px;
+  /* border-bottom: 1px solid #414141; */
+  padding-bottom: 16px;
+  position: sticky;
+  z-index: 99;
+  top: 0.1px;
+  text-align: center;
+}
+
+.search {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.s {
+  color: antiquewhite;
+  margin-left: 70vw;
+  position: fixed;
+  top: 0.1px;
+}

@@ -37,75 +37,79 @@ const Post = (props) => {
     <>
       {location.pathname !== "/perfil" &&
       !location.pathname.includes("jugadores") ? (
-        <div className={style.containerPost}>
-          <div className={style.containerUserContent}>
-            <div>
-              <img src={logo} alt="" className={style.imgUser} />
+        <NavLink to={`post/${props.postId}`} className={style.containerPost}>
+          <div className={style.containerPpal}>
+            <div className={style.containerUserContent}>
+              <div>
+                <img src={logo} alt="" className={style.imgUser} />
+              </div>
+              <div className={style.content}>
+                <NavLink
+                  to={`/jugadores/${data.username}`}
+                  className={style.linkNameUser}
+                >
+                  {data.name}{" "}
+                  <span className={style.arroba}>@{data.username}</span>
+                </NavLink>
+                <p className={style.contentPost}>
+                  {formatContent(props.content)}
+                </p>
+                {/* <div className={style.flexImgs}>
+<img src={fire} alt="" className={style.imgContent} />
+</div> */}
+              </div>
             </div>
-            <div className={style.content}>
-              <NavLink
-                to={`/jugadores/${data.username}`}
-                className={style.linkNameUser}
-              >
-                {data.name}{" "}
-                <span className={style.arroba}>@{data.username}</span>
-              </NavLink>
-              <p className={style.contentPost}>
-                {formatContent(props.content)}
-              </p>
-              {/* <div className={style.flexImgs}>
-            <img src={fire} alt="" className={style.imgContent} />
-          </div> */}
+            <div className={style.containerReactions}>
+              <div>
+                <p className={style.textReactions}>123</p>
+                <box-icon name="heart" color="#818486"></box-icon>
+                <p className={style.textReactions}>Me gusta</p>
+              </div>
+              <div>
+                <p className={style.textReactions}>123</p>
+                <box-icon name="comment" color="#818486"></box-icon>
+                <p className={style.textReactions}>Comentar</p>
+              </div>
             </div>
           </div>
-          <div className={style.containerReactions}>
-            <div>
-              <p className={style.textReactions}>123</p>
-              <box-icon name="heart" color="#818486"></box-icon>
-              <p className={style.textReactions}>Me gusta</p>
-            </div>
-            <div>
-              <p className={style.textReactions}>123</p>
-              <box-icon name="comment" color="#818486"></box-icon>
-              <p className={style.textReactions}>Comentar</p>
-            </div>
-          </div>
-        </div>
+        </NavLink>
       ) : (
-        <div className={style.containerPost}>
-          <div className={style.containerUserContent}>
-            <div>
-              <img src={logo} alt="" className={style.imgUser} />
-            </div>
-            <div className={style.content}>
-              <NavLink
-                to={`/jugadores/${props.user.username}`}
-                className={style.linkNameUser}
-              >
-                {props.user.name}{" "}
-                <span className={style.arroba}>@{props.user.username}</span>
-              </NavLink>
-              <p className={style.contentPost}>
-                {formatContent(props.content)}
-              </p>
-              {/* <div className={style.flexImgs}>
+        <NavLink to={`/post/${props.postId}`} className={style.containerPost}>
+          <div className={style.containerPpal}>
+            <div className={style.containerUserContent}>
+              <div>
+                <img src={logo} alt="" className={style.imgUser} />
+              </div>
+              <div className={style.content}>
+                <NavLink
+                  to={`/jugadores/${props.user.username}`}
+                  className={style.linkNameUser}
+                >
+                  {props.user.name}{" "}
+                  <span className={style.arroba}>@{props.user.username}</span>
+                </NavLink>
+                <p className={style.contentPost}>
+                  {formatContent(props.content)}
+                </p>
+                {/* <div className={style.flexImgs}>
             <img src={fire} alt="" className={style.imgContent} />
           </div> */}
+              </div>
+            </div>
+            <div className={style.containerReactions}>
+              <div>
+                <p className={style.textReactions}>123</p>
+                <box-icon name="heart" color="#818486"></box-icon>
+                <p className={style.textReactions}>Me gusta</p>
+              </div>
+              <div>
+                <p className={style.textReactions}>123</p>
+                <box-icon name="comment" color="#818486"></box-icon>
+                <p className={style.textReactions}>Comentar</p>
+              </div>
             </div>
           </div>
-          <div className={style.containerReactions}>
-            <div>
-              <p className={style.textReactions}>123</p>
-              <box-icon name="heart" color="#818486"></box-icon>
-              <p className={style.textReactions}>Me gusta</p>
-            </div>
-            <div>
-              <p className={style.textReactions}>123</p>
-              <box-icon name="comment" color="#818486"></box-icon>
-              <p className={style.textReactions}>Comentar</p>
-            </div>
-          </div>
-        </div>
+        </NavLink>
       )}
     </>
   );

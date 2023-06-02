@@ -1,11 +1,25 @@
 .containerPost {
+  /* padding: 16px; */
+  border-bottom: 1px solid #41414148;
+  /* padding-right: 20px; */
+  text-decoration: none;
+}
+
+
+.containerPpal {
   padding: 16px;
   border-bottom: 1px solid #41414148;
-  padding-right: 20px;
+  padding-right: 4px;
+}
+
+
+.containerPpal:hover {
+  background-color: #474c570a;
 }
 
 .containerUserContent {
   display: flex;
+  padding-left: 2px;
 }
 
 .imgUser {
@@ -27,7 +41,9 @@
   text-decoration: none;
 }
 
-.linkNameUser:hover{
+.linkNameUser:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-white);
   color: var(--color-white);
 }
 
