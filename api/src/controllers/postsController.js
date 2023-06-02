@@ -25,10 +25,10 @@ const getMyPosts = async ({ userId }) => {
   return allPosts;
 };
 
-const getPostsByUsername = async ({ username }) => {
+const getPostsByUsername = async ({ idOrUsername }) => {
   const user = await User.findOne({
     where: {
-      username,
+      username: idOrUsername,
     },
   });
   if (!user) throw new Error("Usuario inexistente.");
@@ -39,6 +39,12 @@ const getPostsByUsername = async ({ username }) => {
     order: [["createdAt", "DESC"]],
   });
   return allPosts;
+};
+
+const getPostById = async ({ idOrUsername }) => {
+  const post = await Post.findByPk(idOrUsername);
+  if (!post) throw new Error("Post no encontrado");
+  return post;
 };
 
 const verifyToken = async (authorization) => {
@@ -64,4 +70,5 @@ module.exports = {
   verifyToken,
   getMyPosts,
   getPostsByUsername,
+  getPostById,
 };

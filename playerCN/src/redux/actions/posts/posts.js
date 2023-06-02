@@ -44,7 +44,7 @@ export const getPostsByUser = (token) => {
 export const getPostsByUsername = (username) => {
   return async (dispatch) => {
     try {
-      const json = await axios.get(`/posts/${username}`);
+      const json = await axios.get(`/posts/${username}?queryType=username`);
       return dispatch({
         type: GET_POSTS_USER,
         payload: json.data,

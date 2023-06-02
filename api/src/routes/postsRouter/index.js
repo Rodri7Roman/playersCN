@@ -5,6 +5,7 @@ const {
   verifyToken,
   getMyPosts,
   getPostsByUsername,
+  getPostById,
 } = require("../../controllers/postsController");
 
 const postsRouter = Router();
@@ -46,12 +47,20 @@ postsRouter.get("/myPosts", async (req, res) => {
   }
 });
 
-postsRouter.get("/:username", async (req, res) => {
+postsRouter.get("/:idOrUsername", async (req, res) => {
   try {
-    const { username } = req.params;
-    if (!username) throw new Error("Username no recibido.");
-    const posts = await getPostsByUsername({ username });
-    res.status(200).send(posts);
+    const { idOrUsername } = req.params;
+    const { queryType } = req.query;
+    if (!idOrUsername)
+      return res.status(401).send("Id o username no recibido.");
+
+    if (queryType === "username") {
+      const posts = await getPostsByUsername({ idOrUsername });
+      res.status(200).send(posts);
+    } else if (queryType === "id") {
+      const post = await getPostById({ idOrUsername });
+      res.status(200).send(post);
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
