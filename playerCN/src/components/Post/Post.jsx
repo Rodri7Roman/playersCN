@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from "./Post.module.css";
 import logo from "../../assets/imgs/logoEquipo2.png";
-import axios from "axios";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useSWR from "swr";
 import { getUserById } from "../../redux/actions/users/user";
 
 const Post = (props) => {
-  const location = useLocation();
-
   const { data, isLoading } = useSWR(`users/${props.userId}`, () =>
     getUserById(props.userId)
   );
