@@ -187,6 +187,15 @@ export const updatePassword = (token, oldPassword, newPassword) => {
   };
 };
 
+export const getUserById = async (id) => {
+  try {
+    const json = await axios.get(`/users/${id}?queryType=id`);
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const logout = () => {
   return async function (dispatch) {
     localStorage.removeItem("token");

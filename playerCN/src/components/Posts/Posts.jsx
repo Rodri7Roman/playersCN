@@ -11,7 +11,6 @@ const Posts = (props) => {
               postId = {post.id}
               content={post.content}
               userId={post.UserId}
-              user={props.user}
             />
           </div>
         );

@@ -58,6 +58,15 @@ export const getPostsByUsername = (username) => {
   };
 };
 
+export const getPostById = async (id) => {
+  try {
+    const json = await axios.get(`posts/${id}?queryType=id`);
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const postPost = (content, token) => {
   return async (dispatch) => {
     try {

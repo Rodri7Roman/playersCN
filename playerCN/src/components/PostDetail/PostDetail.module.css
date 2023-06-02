@@ -10,13 +10,13 @@
   min-height: 110vh;
 }
 
-.containerSearch {
+.containerHeader {
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   background-color: #1b1b1b33;
 }
 
-.containerSearch {
+.containerHeader {
   padding-top: 26px;
   padding-left: 16px;
   /* border-bottom: 1px solid #414141; */
@@ -24,10 +24,19 @@
   position: sticky;
   z-index: 99;
   top: 0.1px;
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .search {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.containerHeader a {
+  margin-left: 12px;
   font-size: 2rem;
   font-weight: bold;
   color: #fff;

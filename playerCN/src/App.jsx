@@ -31,7 +31,7 @@ function App() {
             <Route exact path="/equipos/1" element={<Equipo />} />
             <Route exact path="/jugadores" element={<Jugadores />} />
             <Route exact path="/jugadores/:username" element={<Jugador />} />
-            <Route exact path="/post/:id" element={<PostDetail />} />
+            <Route exact path="/post/:idPost" element={<PostDetail />} />
             <Route exact path="/perfil" element={<MyProfile />} />
             <Route path="*" element={<Error />} />
             {/* </Suspense> */}

@@ -20,7 +20,8 @@
     "redux": "4.0",
     "redux-thunk": "^2.4.2",
     "styled-components": "^5.3.10",
-    "sweetalert2": "^11.7.5"
+    "sweetalert2": "^11.7.5",
+    "swr": "^2.1.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

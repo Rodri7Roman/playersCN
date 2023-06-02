@@ -9,7 +9,7 @@ const Profile = (props) => {
       <Header user={props.user} />
       <Description user={props.user} />
       <div className={style.containerPost}>
-        <Posts posts={props.posts} user={props.user} />
+        <Posts posts={props.posts} />
       </div>
     </div>
   );
