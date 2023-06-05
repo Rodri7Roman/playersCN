@@ -19,6 +19,15 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
+      kids: {
+        type: DataTypes.ARRAY(DataTypes.UUID),
+        allowNull: true,
+        defaultValue: [],
+      },
+      parentCommentId: {
+        type: DataTypes.UUID,
+        allowNull: true,
+      },
     },
     {
       timestamps: false,

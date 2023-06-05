@@ -43,6 +43,36 @@ Comment.belongsTo(User);
 Post.hasMany(Comment, { foreignKey: "postId" });
 Comment.belongsTo(Post, { foreignKey: "postId" });
 
+Comment.associate = (models) => {
+  Comment.belongsTo(models.Comment, {
+    foreignKey: "parentCommentId",
+    as: "parentComment",
+  });
+  Comment.hasMany(models.Comment, {
+    foreignKey: "parentCommentId",
+    as: "replies",
+  });
+};
+
+Comment.afterCreate(async (comment, options) => {
+  if (comment.parentCommentId) {
+    // Es una respuesta a un comentario
+    const parentComment = await Comment.findByPk(comment.parentCommentId);
+    if (parentComment) {
+      const updatedKids = [...parentComment.kids, comment.id];
+      await parentComment.update({ kids: updatedKids }, options);
+    }
+  } else {
+    // Es una respuesta a un post
+    const post = await Post.findByPk(comment.PostId);
+    console.log(comment);
+    if (post) {
+      const updatedKids = [...post.kids, comment.id];
+      await post.update({ kids: updatedKids }, options);
+    }
+  }
+});
+
 module.exports = {
   ...db.models,
   conn: db,
