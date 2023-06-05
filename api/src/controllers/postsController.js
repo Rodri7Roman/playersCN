@@ -2,15 +2,11 @@ const { Post, User } = require("../db");
 const { jwtVerify } = require("jose");
 
 const getAllPosts = async () => {
-  try {
-    // const allPosts = await Post.findAll();
-    const allPosts = await Post.findAll({
-      order: [["createdAt", "DESC"]],
-    });
-    return allPosts;
-  } catch (error) {
-    return error.message;
-  }
+  // const allPosts = await Post.findAll();
+  const allPosts = await Post.findAll({
+    order: [["createdAt", "DESC"]],
+  });
+  return allPosts;
 };
 
 const getMyPosts = async ({ userId }) => {
@@ -57,9 +53,9 @@ const verifyToken = async (authorization) => {
 };
 
 const postPost = async ({ content, userId }) => {
-  const newPost = await Post.create({ content });
   const user = await User.findByPk(userId);
   if (!user) throw new Error("Usuario inexistente.");
+  const newPost = await Post.create({ content });
   await newPost.setUser(userId);
   return "Publicado.";
 };

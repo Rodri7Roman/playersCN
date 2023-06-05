@@ -19,7 +19,7 @@ const Home = () => {
     if (!token) navigate("/ingresar");
     dispatch(getUser(token));
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

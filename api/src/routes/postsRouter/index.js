@@ -22,9 +22,9 @@ postsRouter.get("/", async (req, res) => {
 postsRouter.post("/", async (req, res) => {
   try {
     const { authorization } = req.headers;
-    if (!authorization) throw new Error("No estas autorizado.");
+    if (!authorization) return res.status(401).send("Faltan datos");
     const { content } = req.body;
-    if (!content) throw new Error("Campo vacío.");
+    if (!content.length) return res.status(400).send("Campo vacio.");
     const { payload } = await verifyToken(authorization);
     const userId = payload.id;
     const newPost = await postPost({ content, userId });
@@ -37,7 +37,7 @@ postsRouter.post("/", async (req, res) => {
 postsRouter.get("/myPosts", async (req, res) => {
   try {
     const { authorization } = req.headers;
-    if (!authorization) throw new Error("No estas autorizado.");
+    if (!authorization) return res.status(401).send("No estas autorizado");
     const { payload } = await verifyToken(authorization);
     const userId = payload.id;
     const posts = await getMyPosts({ userId });
@@ -52,7 +52,7 @@ postsRouter.get("/:idOrUsername", async (req, res) => {
     const { idOrUsername } = req.params;
     const { queryType } = req.query;
     if (!idOrUsername)
-      return res.status(401).send("Id o username no recibido.");
+      return res.status(400).send("Id o username no recibido.");
 
     if (queryType === "username") {
       const posts = await getPostsByUsername({ idOrUsername });
