@@ -7,6 +7,7 @@ const {
   getPostsByUsername,
   getPostById,
   postComment,
+  getCommentsByPostId,
 } = require("../../controllers/postsController");
 
 const postsRouter = Router();
@@ -49,6 +50,17 @@ postsRouter.get("/myPosts", async (req, res) => {
     const userId = payload.id;
     const posts = await getMyPosts({ userId });
     res.status(200).send(posts);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+postsRouter.get("/comments/:parentId", async (req, res) => {
+  try {
+    const { parentId } = req.params;
+    if (!parentId) return res.status(400).send("ParentId no recibido.");
+    const comments = await getCommentsByPostId({ parentId });
+    res.status(200).send(comments);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

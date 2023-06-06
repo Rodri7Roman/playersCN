@@ -5,6 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import Post from "../Post/Post";
 import useSWR from "swr";
 import { getPostById } from "../../redux/actions/posts/posts";
+import Comments from "./Comments";
 
 const PostDetail = (props) => {
   const { idPost } = useParams();
@@ -28,6 +29,7 @@ const PostDetail = (props) => {
         </div>
         <div className={style.containerPost}>
           <Post postId={id} content={content} userId={UserId} />
+          <Comments />
         </div>
       </div>
       <div>

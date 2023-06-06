@@ -2,11 +2,24 @@ const { Post, User } = require("../db");
 const { jwtVerify } = require("jose");
 
 const getAllPosts = async () => {
-  // const allPosts = await Post.findAll();
   const allPosts = await Post.findAll({
     order: [["createdAt", "DESC"]],
+    where: {
+      parentPostId: null,
+    },
   });
   return allPosts;
+};
+
+const getCommentsByPostId = async ({ parentId }) => {
+  const comments = await Post.findAll({
+    order: [["createdAt", "DESC"]],
+    where: {
+      parentPostId: parentId,
+    },
+  });
+  if (!comments) throw new Error("No hay comentarios.");
+  return comments;
 };
 
 const getMyPosts = async ({ userId }) => {
@@ -58,6 +71,7 @@ const postComment = async ({ content, userId, parentPostId }) => {
   const parentPost = await Post.findByPk(parentPostId);
   if (!parentPost) throw new Error("Post padre inexistente.");
   const newPost = await Post.create({ content, parentPostId });
+  await newPost.setUser(userId);
   return newPost;
 };
 
@@ -77,4 +91,5 @@ module.exports = {
   getPostsByUsername,
   getPostById,
   postComment,
+  getCommentsByPostId,
 };

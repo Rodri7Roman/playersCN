@@ -12,7 +12,6 @@ const Post = (props) => {
   if (isLoading) {
     return <span>Loading...</span>;
   }
-
   const { username, admin, email, id, name } = data.data;
 
   const formatContent = (content) => {

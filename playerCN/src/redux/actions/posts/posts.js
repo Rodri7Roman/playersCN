@@ -1,4 +1,4 @@
-import { GET_POSTS, ERROR, GET_POSTS_USER } from "./types";
+import { GET_POSTS, ERROR, GET_POSTS_USER, GET_COMMENTS } from "./types";
 import axios from "axios";
 import ToastError from "../../../components/Alerts/ToastError";
 import ToastSuccess from "../../../components/Alerts/ToastSuccess";
@@ -18,6 +18,15 @@ export const getPosts = () => {
       });
     }
   };
+};
+
+export const getComments = async (parentId) => {
+  try {
+    const json = await axios.get(`/posts/comments/${parentId}`);
+    return json;
+  } catch (error) {
+    return error;
+  }
 };
 
 export const getPostsByUser = (token) => {

@@ -8,12 +8,18 @@ import {
   LOGOUT,
   ERROR,
 } from "./actions/users/types";
-import { GET_POSTS, GET_POSTS_USER, POST_POST } from "./actions/posts/types";
+import {
+  GET_COMMENTS,
+  GET_POSTS,
+  GET_POSTS_USER,
+  POST_POST,
+} from "./actions/posts/types";
 
 const initialState = {
   user: {},
   error: false,
   posts: [],
+  comments: [],
   postsUser: [],
 };
 
@@ -61,6 +67,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         post: [...post, action.payload],
+      };
+    }
+    case GET_COMMENTS: {
+      return {
+        ...state,
+        comments: action.payload,
       };
     }
     default:
