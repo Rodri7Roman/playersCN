@@ -5,13 +5,11 @@
   text-decoration: none;
 }
 
-
 .containerPpal {
   padding: 16px;
   border-bottom: 1px solid #41414148;
   padding-right: 4px;
 }
-
 
 .containerPpal:hover {
   background-color: #474c570a;
@@ -23,8 +21,8 @@
 }
 
 .imgUser {
-  width: 64px;
-  height: 64px;
+  width: 55px;
+  height: 55px;
   border-radius: 58px;
 }
 

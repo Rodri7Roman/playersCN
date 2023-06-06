@@ -1,0 +1,73 @@
+.PostContainer {
+  width: 100%;
+  border-bottom: 1px solid #41414148;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0px;
+}
+
+.fotoUsuario {
+  height: 100%;
+  padding: 16px;
+}
+
+.imgPerfil {
+  border-radius: 54px;
+  width: 55px;
+  height: 55px;
+}
+
+.containerTextArea {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 110%;
+}
+
+.containerTextArea textarea {
+  background-color: transparent;
+  width: 30vw;
+  height: 59px;
+  resize: none;
+  border-radius: 3px;
+  border-color: transparent;
+  outline: none;
+  font-size: 1.6rem;
+  padding-top: 15px;
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.containerEnviarIcon {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-top: 12px;
+}
+.containerIcon {
+  padding-right: 12px;
+}
+.containerEnviar {
+  padding-right: 12px;
+}
+.active {
+  width: 80px;
+  height: 40px;
+  border-radius: 16px;
+  font-size: 1.6rem;
+  border: none;
+  background-color: var(--color-blue-light);
+  color: #ffffff;
+}
+
+.desactive {
+  width: 80px;
+  height: 40px;
+  border-radius: 16px;
+  font-size: 1.6rem;
+  border: none;
+  background-color: #21333f5d;
+  color: #ffffff;
+}

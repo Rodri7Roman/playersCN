@@ -5,12 +5,14 @@ const Posts = (props) => {
   return (
     <div>
       {props.posts?.map((post) => {
+        console.log(post);
         return (
           <div key={post.id}>
             <Post
-              postId = {post.id}
+              postId={post.id}
               content={post.content}
               userId={post.UserId}
+              kids={post.kids.length}
             />
           </div>
         );

@@ -6,6 +6,7 @@ import Post from "../Post/Post";
 import useSWR from "swr";
 import { getPostById } from "../../redux/actions/posts/posts";
 import Comments from "./Comments";
+import Prompt from "./Prompt/Prompt";
 
 const PostDetail = (props) => {
   const { idPost } = useParams();
@@ -16,7 +17,7 @@ const PostDetail = (props) => {
     return <span>Loading...</span>;
   }
 
-  const { UserId, content, createdAt, id } = data.data;
+  const { UserId, content, createdAt, id, kids } = data.data;
   return (
     <div className={style.containerPpal}>
       <NavBar />
@@ -28,7 +29,13 @@ const PostDetail = (props) => {
           <a href="#inicio">Post</a>
         </div>
         <div className={style.containerPost}>
-          <Post postId={id} content={content} userId={UserId} />
+          <Post
+            postId={id}
+            content={content}
+            userId={UserId}
+            kids={kids.length}
+          />
+          <Prompt />
           <Comments />
         </div>
       </div>

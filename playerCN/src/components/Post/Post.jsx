@@ -54,9 +54,9 @@ const Post = (props) => {
               <p className={style.textReactions}>Me gusta</p>
             </div>
             <div>
-              <p className={style.textReactions}>123</p>
+              <p className={style.textReactions}>{props.kids}</p>
               <box-icon name="comment" color="#818486"></box-icon>
-              <p className={style.textReactions}>Comentar</p>
+              <p className={style.textReactions}>Comentarios</p>
             </div>
           </div>
         </div>
