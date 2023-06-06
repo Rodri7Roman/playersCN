@@ -26,6 +26,18 @@ const Prompt = (props) => {
     dispatch(postPost(input.post, token));
   };
 
+  const textarea = document.querySelector("#post");
+  textarea?.addEventListener("keyup", (e) => {
+    textarea.style.height = "90px";
+    let scHeight = e.target.scrollHeight;
+    textarea.style.height = `${scHeight + 30}px`;
+    if (scHeight > 300) {
+      textarea.classList.add(`${style.textAct}`);
+    }else{
+      textarea.classList.remove(`${style.textAct}`)
+    }
+  });
+
   return (
     <div className={style.PostContainer}>
       <div className={style.fotoUsuario}>
@@ -37,6 +49,7 @@ const Prompt = (props) => {
           name="post"
           id="post"
           rows={4}
+          className={`${style.text}`}
           placeholder="Qué estás pensando?"
           value={input.post}
         ></textarea>

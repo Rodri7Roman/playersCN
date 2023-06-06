@@ -30,7 +30,12 @@ const Prompt = (props) => {
   textarea?.addEventListener("keyup", (e) => {
     textarea.style.height = "60px";
     let scHeight = e.target.scrollHeight;
-    textarea.style.height = `${scHeight}px`;
+    textarea.style.height = `${scHeight + 30}px`;
+    if (scHeight > 300) {
+      textarea.classList.add(`${style.textAct}`);
+    } else {
+      textarea.classList.remove(`${style.textAct}`);
+    }
   });
 
   return (

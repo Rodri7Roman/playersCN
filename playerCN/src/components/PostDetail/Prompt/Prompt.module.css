@@ -1,5 +1,6 @@
 .PostContainer {
   width: 100%;
+  max-height: 400px;
   border-bottom: 1px solid #41414148;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -30,6 +31,7 @@ textarea::-webkit-scrollbar {
   background-color: transparent;
   width: 30vw;
   height: 59px;
+  max-height: 300px;
   resize: none;
   border-radius: 3px;
   border-color: transparent;
@@ -38,6 +40,19 @@ textarea::-webkit-scrollbar {
   padding-top: 15px;
   color: #ffffff;
   font-weight: normal;
+}
+
+.textAct::-webkit-scrollbar {
+  width: 16px; /* width of the entire scrollbar */
+}
+
+.textAct::-webkit-scrollbar-track {
+  background: var(--color-blue); /* color of the tracking area */
+}
+.textAct::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-light); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid var(--color-blue); /* creates padding around scroll thumb */
 }
 
 .containerEnviarIcon {
