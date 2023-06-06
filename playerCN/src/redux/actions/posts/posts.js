@@ -100,3 +100,26 @@ export const postPost = (content, token) => {
     }
   };
 };
+
+export const postComment = (content, token, idPost) => {
+  return async (dispatch) => {
+    try {
+      const json = await axios.post(
+        `/posts/?parentPostId=${idPost}`,
+        { content: content },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // console.log(json);
+      window.location.reload();
+    } catch (error) {
+      return ToastError.fire({
+        icon: "error",
+        title: error.response.data.error,
+      });
+    }
+  };
+};

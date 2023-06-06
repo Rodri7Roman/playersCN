@@ -5,10 +5,12 @@ import perfil from "../../../assets/imgs/logoEquipo.jpg";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { postPost } from "../../../redux/actions/posts/posts";
+import { postComment, postPost } from "../../../redux/actions/posts/posts";
+import { useParams } from "react-router-dom";
 
 const Prompt = (props) => {
   const dispatch = useDispatch();
+  const { idPost } = useParams();
   const token = localStorage.getItem("token");
   const [input, setInput] = useState({
     post: "",
@@ -23,7 +25,7 @@ const Prompt = (props) => {
 
   const submitPost = (e) => {
     e.preventDefault();
-    dispatch(postPost(input.post, token));
+    dispatch(postComment(input.post, token, idPost));
   };
 
   const textarea = document.querySelector("#post");
