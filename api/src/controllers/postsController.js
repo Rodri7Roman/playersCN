@@ -28,6 +28,7 @@ const getMyPosts = async ({ userId }) => {
   const allPosts = await Post.findAll({
     where: {
       UserId: userId,
+      parentPostId: null,
     },
     order: [["createdAt", "DESC"]],
   });
@@ -44,6 +45,7 @@ const getPostsByUsername = async ({ idOrUsername }) => {
   const allPosts = await Post.findAll({
     where: {
       UserId: user.id,
+      parentPostId: null,
     },
     order: [["createdAt", "DESC"]],
   });
