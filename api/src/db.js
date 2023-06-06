@@ -32,43 +32,21 @@ let capsEntries = entries.map((entry) => [
 
 db.models = Object.fromEntries(capsEntries);
 
-const { User, Post, Comment } = db.models;
+const { User, Post } = db.models;
 
 User.hasMany(Post);
 Post.belongsTo(User);
 
-User.hasMany(Comment);
-Comment.belongsTo(User);
+Post.hasMany(Post, { foreignKey: "parentPostId", as: "replies" });
+Post.belongsTo(Post, { foreignKey: "parentPostId", as: "parentPost" });
 
-Post.hasMany(Comment, { foreignKey: "postId" });
-Comment.belongsTo(Post, { foreignKey: "postId" });
-
-Comment.associate = (models) => {
-  Comment.belongsTo(models.Comment, {
-    foreignKey: "parentCommentId",
-    as: "parentComment",
-  });
-  Comment.hasMany(models.Comment, {
-    foreignKey: "parentCommentId",
-    as: "replies",
-  });
-};
-
-Comment.afterCreate(async (comment, options) => {
-  if (comment.parentCommentId) {
-    // Es una respuesta a un comentario
-    const parentComment = await Comment.findByPk(comment.parentCommentId);
-    if (parentComment) {
-      const updatedKids = [...parentComment.kids, comment.id];
-      await parentComment.update({ kids: updatedKids }, options);
-    }
-  } else {
-    // Es una respuesta a un post
-    const post = await Post.findByPk(comment.PostId);
-    console.log(comment);
-    if (post) {
-      const updatedKids = [...post.kids, comment.id];
-      await post.update({ kids: updatedKids }, options);
+Post.afterCreate(async (post, options) => {
+  if (post.parentPostId) {
+    // Es una respuesta a otro post
+    const parentPost = await Post.findByPk(post.parentPostId);
+    if (parentPost) {
+      const updatedKids = [...parentPost.kids, post.id];
+      await parentPost.update({ kids: updatedKids }, options);
     }
   }
 });

@@ -6,6 +6,7 @@ const {
   getMyPosts,
   getPostsByUsername,
   getPostById,
+  postComment,
 } = require("../../controllers/postsController");
 
 const postsRouter = Router();
@@ -27,8 +28,14 @@ postsRouter.post("/", async (req, res) => {
     if (!content.length) return res.status(400).send("Campo vacio.");
     const { payload } = await verifyToken(authorization);
     const userId = payload.id;
-    const newPost = await postPost({ content, userId });
-    return res.status(200).send(newPost);
+    const { parentPostId } = req.query;
+    if (parentPostId) {
+      const newPost = await postComment({ content, userId, parentPostId });
+      return res.status(200).send(newPost);
+    } else {
+      const newPost = await postPost({ content, userId });
+      return res.status(200).send(newPost);
+    }
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }

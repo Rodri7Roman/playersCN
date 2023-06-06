@@ -52,6 +52,15 @@ const verifyToken = async (authorization) => {
   return jwtData;
 };
 
+const postComment = async ({ content, userId, parentPostId }) => {
+  const user = await User.findByPk(userId);
+  if (!user) throw new Error("Usuario inexistente.");
+  const parentPost = await Post.findByPk(parentPostId);
+  if (!parentPost) throw new Error("Post padre inexistente.");
+  const newPost = await Post.create({ content, parentPostId });
+  return newPost;
+};
+
 const postPost = async ({ content, userId }) => {
   const user = await User.findByPk(userId);
   if (!user) throw new Error("Usuario inexistente.");
@@ -67,4 +76,5 @@ module.exports = {
   getMyPosts,
   getPostsByUsername,
   getPostById,
+  postComment,
 };

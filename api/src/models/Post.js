@@ -24,6 +24,10 @@ module.exports = (sequelize) => {
         allowNull: true,
         defaultValue: [],
       },
+      parentPostId: {
+        type: DataTypes.UUID,
+        allowNull: true,
+      },
     },
     {
       timestamps: false,
