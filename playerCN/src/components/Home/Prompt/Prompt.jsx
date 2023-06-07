@@ -6,10 +6,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { postPost } from "../../../redux/actions/posts/posts";
+import { validate } from "./validate";
 
 const Prompt = (props) => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
+  const [inputErrors, setInputErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   const [input, setInput] = useState({
     post: "",
   });
@@ -21,9 +24,16 @@ const Prompt = (props) => {
     });
   };
 
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      dispatch(postPost(input.post, token));
+    }
+  }, [inputErrors]);
+
   const submitPost = (e) => {
     e.preventDefault();
-    dispatch(postPost(input.post, token));
+    setInputErrors(validate(input));
+    setIsSubmit(true);
   };
 
   const textarea = document.querySelector("#post");
@@ -33,8 +43,8 @@ const Prompt = (props) => {
     textarea.style.height = `${scHeight + 30}px`;
     if (scHeight > 300) {
       textarea.classList.add(`${style.textAct}`);
-    }else{
-      textarea.classList.remove(`${style.textAct}`)
+    } else {
+      textarea.classList.remove(`${style.textAct}`);
     }
   });
 
@@ -53,6 +63,7 @@ const Prompt = (props) => {
           placeholder="Qué estás pensando?"
           value={input.post}
         ></textarea>
+        <span className={style.span}>{inputErrors.post}</span>
         <div className={style.containerEnviarIcon}>
           <div className={style.containerIcon}>
             <box-icon name="image-alt" color="#1E3748"></box-icon>

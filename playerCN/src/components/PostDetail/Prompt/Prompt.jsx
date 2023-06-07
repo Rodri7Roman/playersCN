@@ -7,14 +7,23 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { postComment, postPost } from "../../../redux/actions/posts/posts";
 import { useParams } from "react-router-dom";
+import { validate } from "../../Home/Prompt/validate";
 
 const Prompt = (props) => {
   const dispatch = useDispatch();
   const { idPost } = useParams();
   const token = localStorage.getItem("token");
+  const [inputErrors, setInputErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   const [input, setInput] = useState({
     post: "",
   });
+
+  useEffect(() => {
+    if (Object.keys(inputErrors).length === 0 && isSubmit) {
+      dispatch(postComment(input.post, token, idPost));
+    }
+  }, [inputErrors]);
 
   const handleChange = (e) => {
     setInput({
@@ -25,7 +34,8 @@ const Prompt = (props) => {
 
   const submitPost = (e) => {
     e.preventDefault();
-    dispatch(postComment(input.post, token, idPost));
+    setInputErrors(validate(input));
+    setIsSubmit(true);
   };
 
   const textarea = document.querySelector("#post");
@@ -47,13 +57,13 @@ const Prompt = (props) => {
       </div>
       <div className={style.containerTextArea}>
         <textarea
-          oninput="auto_grow(this)"
           onChange={handleChange}
           name="post"
           id="post"
           placeholder="Publica tu respuesta..."
           value={input.post}
         ></textarea>
+        <span className={style.span}>{inputErrors.post}</span>
         <div className={style.containerEnviarIcon}>
           <div className={style.containerIcon}>
             <box-icon name="image-alt" color="#1E3748"></box-icon>

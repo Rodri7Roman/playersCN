@@ -93,9 +93,10 @@ export const postPost = (content, token) => {
       // });
       window.location.reload();
     } catch (error) {
+      console.log(error);
       return ToastError.fire({
         icon: "error",
-        title: error.response.data.error,
+        title: error.response.data,
       });
     }
   };
@@ -118,7 +119,7 @@ export const postComment = (content, token, idPost) => {
     } catch (error) {
       return ToastError.fire({
         icon: "error",
-        title: error.response.data.error,
+        title: error.response.data,
       });
     }
   };
