@@ -1,12 +1,14 @@
 const { Post, User } = require("../db");
 const { jwtVerify } = require("jose");
 
-const getAllPosts = async () => {
+const getAllPosts = async (limit, offset) => {
   const allPosts = await Post.findAll({
     order: [["createdAt", "DESC"]],
     where: {
       parentPostId: null,
     },
+    limit: limit,
+    offset: offset,
   });
   return allPosts;
 };

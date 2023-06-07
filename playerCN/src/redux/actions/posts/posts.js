@@ -3,10 +3,10 @@ import axios from "axios";
 import ToastError from "../../../components/Alerts/ToastError";
 import ToastSuccess from "../../../components/Alerts/ToastSuccess";
 
-export const getPosts = () => {
+export const getPosts = (limit, offset) => {
   return async (dispatch) => {
     try {
-      const json = await axios.get("/posts");
+      const json = await axios.get(`/posts?limit=${limit}&offset=${offset}`);
       return dispatch({
         type: GET_POSTS,
         payload: json.data,

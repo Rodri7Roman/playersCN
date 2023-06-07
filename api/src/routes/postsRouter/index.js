@@ -14,7 +14,8 @@ const postsRouter = Router();
 
 postsRouter.get("/", async (req, res) => {
   try {
-    const posts = await getAllPosts();
+    const { limit, offset } = req.query;
+    const posts = await getAllPosts(limit, offset);
     res.status(200).send(posts);
   } catch (error) {
     res.status(400).json({ error: error.message });
