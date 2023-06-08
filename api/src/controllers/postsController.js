@@ -7,8 +7,8 @@ const getAllPosts = async (limit, offset) => {
     where: {
       parentPostId: null,
     },
-    limit: limit,
-    offset: offset,
+    limit,
+    offset,
   });
   return allPosts;
 };

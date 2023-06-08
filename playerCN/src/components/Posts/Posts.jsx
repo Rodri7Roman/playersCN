@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Post from "../Post/Post";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../../redux/actions/posts/posts";
 
 const Posts = (props) => {
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts);
+  useEffect(() => {
+    dispatch(getPosts(7, 0));
+  }, [dispatch]);
+
   return (
     <div>
-      {props.posts?.map((post) => {
+      {posts?.map((post) => {
         console.log(post);
         return (
           <div key={post.id}>

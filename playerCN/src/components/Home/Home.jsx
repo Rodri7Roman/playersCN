@@ -12,13 +12,13 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
-  const posts = useSelector((state) => state.posts);
+  // const posts = useSelector((state) => state.posts);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) navigate("/ingresar");
     dispatch(getUser(token));
-    dispatch(getPosts(5, 0));
+    // dispatch(getPosts(7, 0));
   }, [dispatch]);
 
   return (
@@ -36,7 +36,7 @@ const Home = () => {
             </div>
 
             <Prompt />
-            <Posts posts={posts} />
+            <Posts/>
           </div>
           <h1 className={style.s}>KJASD</h1>
         </div>
