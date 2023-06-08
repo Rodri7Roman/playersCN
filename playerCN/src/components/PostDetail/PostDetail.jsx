@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./PostDetail.module.css";
 import NavBar from "../Navbar/NavBar";
 import { NavLink, useParams } from "react-router-dom";
 import Post from "../Post/Post";
-import useSWR from "swr";
 import { getPostById } from "../../redux/actions/posts/posts";
 import Comments from "./Comments";
 import Prompt from "./Prompt/Prompt";
 
 const PostDetail = (props) => {
   const { idPost } = useParams();
-  const { data, isLoading } = useSWR(`post/${idPost}`, () =>
-    getPostById(idPost)
-  );
+  const [postData, setPostData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await getPostById(idPost);
+        setPostData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPost();
+  }, [idPost]);
+
   if (isLoading) {
     return <span>Loading...</span>;
   }
 
-  const { UserId, content, createdAt, id, kids } = data.data;
+  const { UserId, content, createdAt, id, kids } = postData;
+
   return (
     <div className={style.containerPpal}>
       <NavBar />

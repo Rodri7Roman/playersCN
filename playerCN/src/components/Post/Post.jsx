@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Post.module.css";
 import logo from "../../assets/imgs/logoEquipo2.png";
 import { NavLink } from "react-router-dom";
-import useSWR from "swr";
 import { getUserById } from "../../redux/actions/users/user";
 
 const Post = (props) => {
-  const { data, isLoading } = useSWR(`users/${props.userId}`, () =>
-    getUserById(props.userId)
-  );
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-  const { username, admin, email, id, name } = data.data;
+  const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await getUserById(props.userId);
+        setUserData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUser();
+  }, [props.userId]);
 
   const formatContent = (content) => {
     const lines = content?.split("\n");
@@ -23,6 +31,12 @@ const Post = (props) => {
       </React.Fragment>
     ));
   };
+
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  const { username, admin, email, id, name } = userData;
 
   return (
     <>
@@ -42,9 +56,6 @@ const Post = (props) => {
               <p className={style.contentPost}>
                 {formatContent(props.content)}
               </p>
-              {/* <div className={style.flexImgs}>
-<img src={fire} alt="" className={style.imgContent} />
-</div> */}
             </div>
           </div>
           <div className={style.containerReactions}>

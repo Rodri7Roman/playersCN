@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "jose": "4.14.4"
+    "jose": "4.14.4",
+    "react-infinite-scroll-hook": "^4.1.1"
   }
 }

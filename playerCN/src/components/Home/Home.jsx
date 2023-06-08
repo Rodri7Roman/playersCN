@@ -18,7 +18,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
     if (!token) navigate("/ingresar");
     dispatch(getUser(token));
-    dispatch(getPosts());
+    dispatch(getPosts(5, 0));
   }, [dispatch]);
 
   return (
