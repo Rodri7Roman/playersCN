@@ -3,21 +3,16 @@ import axios from "axios";
 import ToastError from "../../../components/Alerts/ToastError";
 import ToastSuccess from "../../../components/Alerts/ToastSuccess";
 
-export const getPosts = (limit, offset) => {
-  return async (dispatch) => {
+export const getPosts = async(limit, offset) => {
     try {
       const json = await axios.get(`/posts?limit=${limit}&offset=${offset}`);
-      return dispatch({
-        type: GET_POSTS,
-        payload: json.data,
-      });
+      return json
     } catch (error) {
       return ToastError.fire({
         icon: "error",
         title: error.response.data,
       });
     }
-  };
 };
 
 export const getComments = async (parentId) => {

@@ -15,6 +15,12 @@ const postsRouter = Router();
 postsRouter.get("/", async (req, res) => {
   try {
     const { limit, offset } = req.query;
+    // limit = parseInt(limit);
+    // offset = parseInt(offset);
+
+    // if (isNaN(limit) || isNaN(offset)) {
+    //   throw new Error("Limit o Offset no son válidos.");
+    // }
     const posts = await getAllPosts(limit, offset);
     res.status(200).send(posts);
   } catch (error) {
