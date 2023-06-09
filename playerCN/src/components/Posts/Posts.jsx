@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import Post from "../Post/Post";
-import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../redux/actions/posts/posts";
 import useSWRInfinite from "swr/infinite";
+import { useLocation } from "react-router-dom";
 
 const PAGE_SIZE = 5;
 
 const Posts = (props) => {
+  const location = useLocation();
   const { data, isLoading, error, size, setSize } = useSWRInfinite(
     (index) => `posts/${index}`,
     (key) => {
       const [, page] = key.split("/");
-      console.log(page);
       return getPosts(PAGE_SIZE, Number(page) * 5);
     }
   );
@@ -61,21 +61,34 @@ const Posts = (props) => {
 
   return (
     <div>
-      {posts?.map((post) => {
-        return (
-          <div key={post.id}>
-            <Post
-              postId={post.id}
-              content={post.content}
-              userId={post.UserId}
-              kids={post.kids.length}
-            />
-          </div>
-        );
-      })}
+      {location.pathname === "/"
+        ? posts?.map((post) => {
+            return (
+              <div key={post.id}>
+                <Post
+                  postId={post.id}
+                  content={post.content}
+                  userId={post.UserId}
+                  kids={post.kids.length}
+                />
+              </div>
+            );
+          })
+        : props.posts?.map((post) => {
+            return (
+              <div key={post.id}>
+                <Post
+                  postId={post.id}
+                  content={post.content}
+                  userId={post.UserId}
+                  kids={post.kids.length}
+                />
+              </div>
+            );
+          })}
       {!error && !isLoading && (
         <span style={{ color: "white" }} ref={spanElement}>
-          .
+          
         </span>
       )}
     </div>
