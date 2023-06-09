@@ -28,6 +28,11 @@ module.exports = (sequelize) => {
         type: DataTypes.UUID,
         allowNull: true,
       },
+      likes: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
     },
     {
       timestamps: false,

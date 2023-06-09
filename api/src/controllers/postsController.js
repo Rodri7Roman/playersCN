@@ -89,6 +89,15 @@ const postPost = async ({ content, userId }) => {
   return "Publicado.";
 };
 
+const like = async ({ postId, userId}) => {
+  const user = await User.findByPk(userId);
+  if (!user) throw new Error("Usuario inexistente.");
+  const post = await Post.findByPk(postId);
+  if (!post) throw new Error("Post no encontrado");
+  console.log(post.likes);
+  return "Like.";
+};
+
 module.exports = {
   getAllPosts,
   postPost,
@@ -98,4 +107,5 @@ module.exports = {
   getPostById,
   postComment,
   getCommentsByPostId,
+  like,
 };

@@ -20,7 +20,7 @@ const Posts = (props) => {
         if (location.pathname === "/") {
           const response = await getPosts(PAGE_SIZE, (page - 1) * PAGE_SIZE);
           setPosts((prevPosts) => [...prevPosts, ...response.data]);
-        } else {
+        } else if (location.pathname.includes("post")){
           const response = await getComments(
             props.idPost,
             PAGE_SIZE,

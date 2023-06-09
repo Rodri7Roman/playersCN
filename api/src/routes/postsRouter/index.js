@@ -8,6 +8,7 @@ const {
   getPostById,
   postComment,
   getCommentsByPostId,
+  like,
 } = require("../../controllers/postsController");
 
 const postsRouter = Router();
@@ -16,6 +17,21 @@ postsRouter.get("/", async (req, res) => {
   try {
     const { limit, offset } = req.query;
     const posts = await getAllPosts(limit, offset);
+    res.status(200).send(posts);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+postsRouter.post("/like/:postId", async (req, res) => {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) return res.status(401).send("Faltan datos");
+    const { payload } = await verifyToken(authorization);
+    const userId = payload.id;
+    console.log(userId);
+    const { postId } = req.params;
+    const posts = await like({ postId, userId });
     res.status(200).send(posts);
   } catch (error) {
     res.status(400).json({ error: error.message });

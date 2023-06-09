@@ -21,7 +21,6 @@ module.exports = (sequelize) => {
           len: [0, 20],
         },
         defaultValue: "",
-        
       },
       username: {
         type: DataTypes.STRING,
@@ -29,6 +28,12 @@ module.exports = (sequelize) => {
         unique: true,
         validate: {
           len: [2, 20],
+        },
+      },
+      description: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [20, 255],
         },
       },
       password: {
@@ -42,6 +47,16 @@ module.exports = (sequelize) => {
       admin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      followers: {
+        type: DataTypes.ARRAY(DataTypes.UUID),
+        allowNull: true,
+        defaultValue: [],
+      },
+      following: {
+        type: DataTypes.ARRAY(DataTypes.UUID),
+        allowNull: true,
+        defaultValue: [],
       },
     },
     {
