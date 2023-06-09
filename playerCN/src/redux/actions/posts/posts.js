@@ -3,21 +3,23 @@ import axios from "axios";
 import ToastError from "../../../components/Alerts/ToastError";
 import ToastSuccess from "../../../components/Alerts/ToastSuccess";
 
-export const getPosts = async(limit, offset) => {
-    try {
-      const json = await axios.get(`/posts?limit=${limit}&offset=${offset}`);
-      return json
-    } catch (error) {
-      return ToastError.fire({
-        icon: "error",
-        title: error.response.data,
-      });
-    }
+export const getPosts = async (limit, offset) => {
+  try {
+    const json = await axios.get(`/posts?limit=${limit}&offset=${offset}`);
+    return json;
+  } catch (error) {
+    return ToastError.fire({
+      icon: "error",
+      title: error.response.data,
+    });
+  }
 };
 
-export const getComments = async (parentId) => {
+export const getComments = async (parentId, limit, offset) => {
   try {
-    const json = await axios.get(`/posts/comments/${parentId}`);
+    const json = await axios.get(
+      `/posts/comments/${parentId}?limit=${limit}&offset=${offset}`
+    );
     return json;
   } catch (error) {
     return error;

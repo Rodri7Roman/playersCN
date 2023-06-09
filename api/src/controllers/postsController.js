@@ -13,12 +13,14 @@ const getAllPosts = async (limit, offset) => {
   return allPosts;
 };
 
-const getCommentsByPostId = async ({ parentId }) => {
+const getCommentsByPostId = async ({ parentId, limit, offset }) => {
   const comments = await Post.findAll({
     order: [["createdAt", "DESC"]],
     where: {
       parentPostId: parentId,
     },
+    limit,
+    offset,
   });
   if (!comments) throw new Error("No hay comentarios.");
   return comments;

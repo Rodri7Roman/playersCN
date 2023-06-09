@@ -15,12 +15,6 @@ const postsRouter = Router();
 postsRouter.get("/", async (req, res) => {
   try {
     const { limit, offset } = req.query;
-    // limit = parseInt(limit);
-    // offset = parseInt(offset);
-
-    // if (isNaN(limit) || isNaN(offset)) {
-    //   throw new Error("Limit o Offset no son válidos.");
-    // }
     const posts = await getAllPosts(limit, offset);
     res.status(200).send(posts);
   } catch (error) {
@@ -65,8 +59,9 @@ postsRouter.get("/myPosts", async (req, res) => {
 postsRouter.get("/comments/:parentId", async (req, res) => {
   try {
     const { parentId } = req.params;
+    const { limit, offset } = req.query;
     if (!parentId) return res.status(400).send("ParentId no recibido.");
-    const comments = await getCommentsByPostId({ parentId });
+    const comments = await getCommentsByPostId({ parentId, limit, offset });
     res.status(200).send(comments);
   } catch (error) {
     res.status(400).json({ error: error.message });
